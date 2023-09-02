@@ -10,31 +10,31 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import lodge.beans.Customer;
 
 
 public class CustomerPeer {
-  	public static ArrayList<Customer> searchCustomers(DataManager dataManager, String keyword) {
-		ArrayList<Customer> customers = new ArrayList<Customer>();
+  	public static Customer getCustomerByEmail(DataManager dataManager, String keyword) {
+		Customer customer = null;
 		Connection connection = dataManager.getConnection();
+
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "select customer_id, title, author, price from customers"
-					+ " where title like '%" + keyword.trim() + "%'"
-					+ " or author like '%" + keyword.trim() + "%'";
+				String sql = "select id, first_name, last_name, email, phone, password from customers"
+					+ " where email=" + keyword.trim();
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					try {
 						while (rs.next()) {
-							Customer customer = new Customer();
-							customer.setId(rs.getString(1));
-							customer.setTitle(rs.getString(2));
-							customer.setAuthor(rs.getString(3));
-							customer.setPrice(rs.getDouble(4));
-							customers.add(customer);
+							customer = new Customer();
+							customer.setId(rs.getInt(1));
+							customer.setFirstName(rs.getString(2));
+							customer.setLastName(rs.getString(3));
+							customer.setEmail(rs.getString(4));
+							customer.setPhoneNumber(rs.getString(4));
+							customer.setPassword(rs.getString(4));
 						}
 					} finally { rs.close(); }
 				} finally { s.close(); }
@@ -44,57 +44,28 @@ public class CustomerPeer {
 				dataManager.putConnection(connection);
 			}
 		}
-    	return customers;
+    	return customer;
 	}
   
-  	public static ArrayList<Customer> getCustomersByCategory(DataManager dataManager, String categoryId) {
-		
-		ArrayList<Customer> customers = new ArrayList<Customer>();
-		Connection connection = dataManager.getConnection();
-
-		if (connection != null) {
-			try {
-				Statement s = connection.createStatement();
-				String sql = "select customer_id, title, author, price from customers"
-					+ " where category_id=" + categoryId;
-				try {
-					ResultSet rs = s.executeQuery(sql);
-					try {
-						while (rs.next()) {
-							Customer customer = new Customer();
-							customer.setId(rs.getString(1));
-							customer.setTitle(rs.getString(2));
-							customer.setAuthor(rs.getString(3));
-							customer.setPrice(rs.getDouble(4));
-							customers.add(customer);
-						}
-					} finally { rs.close(); }
-				} finally { s.close(); }
-			} catch (SQLException e) {
-				System.out.println("Could not get customers: " + e.getMessage());
-			} finally {
-				dataManager.putConnection(connection);
-			}
-		}
-		return customers;
-    }
-
   	public static Customer getCustomerById(DataManager dataManager, String customerID) {
 		Customer customer = null;
 		Connection connection = dataManager.getConnection();
+		
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "select customer_id, title, author, price from customers"
-					+ " where customer_id=" + customerID;
+				String sql = "select id, first_name, last_name, email, phone, password from customers"
+					+ " where id=" + customerID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					if (rs.next()) {
 						customer = new Customer();
-						customer.setId(rs.getString(1));
-						customer.setTitle(rs.getString(2));
-						customer.setAuthor(rs.getString(3));
-						customer.setPrice(rs.getDouble(4));
+						customer.setId(rs.getInt(1));
+						customer.setFirstName(rs.getString(2));
+						customer.setLastName(rs.getString(3));
+						customer.setEmail(rs.getString(4));
+						customer.setPhoneNumber(rs.getString(4));
+						customer.setPassword(rs.getString(4));
 					}
 				} finally { s.close(); }
 			} catch (SQLException e) {
@@ -104,6 +75,17 @@ public class CustomerPeer {
 			}
 		}
 		return customer;
+	}
+
+	public static void insertCustomer(Statement stmt, Customer customer) throws SQLException {
+		String sql = "insert into customers (first_name, last_name, email, phone, password) " 
+			+ "values ('"
+            + customer.getFirstName() + "','"
+            + customer.getLastName() + "','"
+            + customer.getEmail() + "','" 
+			+ customer.getPhoneNumber() + "','" 
+			+ customer.getPassword() + "')";
+        stmt.executeUpdate(sql);
 	}
 }
 
