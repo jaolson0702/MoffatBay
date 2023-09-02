@@ -1,6 +1,11 @@
+/* Team Delta
+ * Authors: Bryce Kellas
+ */
 package beans;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     int id;
     String firstName;
     String lastName;
@@ -9,13 +14,13 @@ public class Customer {
     String password;
 
     // Contructor
-    public Customer(int id, String firstName, String lastName, String email, String phoneNumber, String password) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
+    public Customer() {
+        this.id = 0;
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.phoneNumber = "";
+        this.password = "";
     }
     
     // Getters and setters
