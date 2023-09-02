@@ -1,7 +1,8 @@
 /* Team Delta
  * Authors: Bryce Kellas
  * Class to create a salted hash via "PBKDF2WithHmacSHA1" and validate a user entered password - 
- * Code from https://reflectoring.io/creating-hashes-in-java/ - November 21, 2021 - Author: Pratik Das
+ * Adapted from: https://reflectoring.io/creating-hashes-in-java/ - November 21, 2021 - Author: Pratik Das
+ *      Only used code for PBKDF2WithHmacSHA1 segment, renamed class to HashPassword from HashCreator
  */
 
 import java.io.FileNotFoundException;
