@@ -26,9 +26,31 @@ pageEncoding="ISO-8859-1"%>
       customer.setEmail(request.getParameter("email"));
       customer.setPhoneNumber(request.getParameter("phone"));
       customer.setPassword(hp.generateStrongPasswordHash(request.getParameter("psw")));
-      dataManager.insertCustomer(customer); 
-      } 
-    %>
+      boolean isValid = true;
+      boolean emailIsValid = request.getParameter("email").matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+      + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+      boolean passwordMatches = StringUtils.isMixedCase(request.getParameter("psw"));
+      boolean isMatch = passwordMatches && request.getParameter("psw").length() >= 8;
+      isValid = isMatch && emailIsValid;
+      if (isValid) {
+        dataManager.insertCustomer(customer);
+      }
+      if (!emailIsValid) {
+      %>
+      <script>
+          window.alert("The email is invalid.");
+      </script>
+      <% }
+      if (request.getParameter("psw").length() < 8) { %>
+      <script>
+        window.alert("The password must be at least eight characters long.");
+      </script>
+      <% } if (!passwordMatches) { %>
+        <script>
+        window.alert("The password must have at least one uppercase letter and one lowercase letter.");
+        </script>
+      <% } } %>
+
 
     <div class="container">
       <header>
