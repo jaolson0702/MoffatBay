@@ -23,7 +23,7 @@ public class CustomerPeer {
 			try {
 				Statement s = connection.createStatement();
 				String sql = "select id, first_name, last_name, email, phone, password from customers"
-					+ " where email=" + keyword.trim();
+					+ " where email=\'" + keyword.trim() + "\'";
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					try {
@@ -33,8 +33,8 @@ public class CustomerPeer {
 							customer.setFirstName(rs.getString(2));
 							customer.setLastName(rs.getString(3));
 							customer.setEmail(rs.getString(4));
-							customer.setPhoneNumber(rs.getString(4));
-							customer.setPassword(rs.getString(4));
+							customer.setPhoneNumber(rs.getString(5));
+							customer.setPassword(rs.getString(6));
 						}
 					} finally { rs.close(); }
 				} finally { s.close(); }

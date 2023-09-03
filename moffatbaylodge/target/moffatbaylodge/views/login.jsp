@@ -41,12 +41,12 @@
 
         <!-- POST display -->
         <% if (request.getMethod().equalsIgnoreCase("POST")) { 
-            String email = request.getParameter("email"); 
+            String email = request.getParameter("username"); 
             String password = request.getParameter("password");
 
             if (!email.isEmpty() || !password.isEmpty()) {
                 HashPassword hp = new HashPassword();
-                Customer customer = dataManager.getCustomerLogin(request.getParameter("email"));
+                Customer customer = dataManager.getCustomerLogin(request.getParameter("username"));
 
                 if (hp.validatePassword(password, customer.getPassword())) {
                     RequestDispatcher req = request.getRequestDispatcher("../index.jsp");
