@@ -29,11 +29,11 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
         super();
     }
 
+    private DataManager dataManager = new DataManager();
+
     public void init(ServletConfig config) throws ServletException {
         System.out.println("*** initializing controller servlet.");
         super.init(config);
-
-        DataManager dataManager = new DataManager();
         dataManager.setDbURL(config.getInitParameter("dbURL"));
         dataManager.setDbUserName(config.getInitParameter("dbUserName"));
         dataManager.setDbPassword(config.getInitParameter("dbPassword"));
@@ -44,7 +44,7 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
         context.setAttribute("dataManager", dataManager);
 
         try {  // load the database JDBC driver
-            Class.forName(config.getInitParameter("jdbcDriver"));
+            Class.forName(getServletContext().getInitParameter("jdbcDriver"));
         }
         catch (ClassNotFoundException e) {
             System.out.println(e.toString());
@@ -64,17 +64,17 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
         if (action != null) {
             switch (action) {
                 case "login": 
-                    url = base + "login.html";
+                    url = base + "login.jsp";
                     break;
                 case "registration":
-                    url = base + "registration.html";
+                    url = base + "registration.jsp";
                     Customer c = new Customer();
                     c.setFirstName(request.getParameter("firstname"));
                     c.setLastName(request.getParameter("lastname"));
                     c.setEmail(request.getParameter("email"));
                     c.setPhoneNumber(request.getParameter("phone"));
                     c.setPassword(request.getParameter("psw"));
-                    c.insertCustomer();
+                    dataManager.insertCustomer(c);
                     break;
                 default:
                     break;

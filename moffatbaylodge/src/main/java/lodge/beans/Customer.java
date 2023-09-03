@@ -39,10 +39,5 @@ public class Customer implements Serializable {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    // Database Operations
-    public void insertCustomer() {
-
-    }
-
 
 }
