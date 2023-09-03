@@ -1,25 +1,35 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd" >
 
- <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <context-param>
+<web-app>
+<display-name>Archetype Created Web Application</display-name>
+<context-param>
 	<param-name>dbURL</param-name>
 	<param-value>jdbc:mysql://localhost:3306/moffatbay?serverTimezone=UTC</param-value>
-  </context-param>
-  <context-param>
+</context-param>
+<context-param>
 	<param-name>dbUserName</param-name>
 	<param-value>root</param-value>
-  </context-param>
-  <context-param>
+</context-param>
+<context-param>
 	<param-name>dbPassword</param-name>
 	<param-value>root</param-value>
-  </context-param>
-  <context-param>
+</context-param>
+<context-param>
 	<param-name>jdbcDriver</param-name>
 	<param-value>com.mysql.cj.jdbc.Driver</param-value>
-  </context-param>
+</context-param>
+
+<servlet>
+	<servlet-name>LoginServlet</servlet-name>
+	<servlet-class>lodge.LoginServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>LoginServlet</servlet-name>
+	<url-pattern>/lodge/LoginServlet</url-pattern>
+</servlet-mapping>
   <!--
   <servlet>
 		<servlet-name>LodgeServlet</servlet-name>

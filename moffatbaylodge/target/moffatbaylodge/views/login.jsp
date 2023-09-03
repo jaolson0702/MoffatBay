@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%> <%@page import="lodge.beans.Customer"%>
-<jsp:useBean
-  id="dataManager"
-  scope="application"
-  class="lodge.models.DataManager"
-/>
+    pageEncoding="ISO-8859-1"%> 
+<%@page import="lodge.beans.Customer"%>
+<%@page import="lodge.models.DataManager"%>
+<%@page import="lodge.HashPassword"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -42,19 +41,27 @@ pageEncoding="ISO-8859-1"%> <%@page import="lodge.beans.Customer"%>
 
         <!-- POST display -->
         <% if (request.getMethod().equalsIgnoreCase("POST")) { 
-            Customer customer = new Customer(); 
-            customer.setFirstName(request.getParameter("firstname"));
-            customer.setLastName(request.getParameter("lastname"));
-            customer.setEmail(request.getParameter("email"));
-            customer.setPhoneNumber(request.getParameter("phone"));
-            customer.setPassword(request.getParameter("psw"));
-            dataManager.insertCustomer(customer);
+            String email = request.getParameter("email"); 
+            String password = request.getParameter("password");
+
+            if (!email.isEmpty() || !password.isEmpty()) {
+                HashPassword hp = new HashPassword();
+                Customer customer = dataManager.getCustomerLogin(request.getParameter("email"));
+
+                if (hp.validatePassword(password, customer.getPassword())) {
+                    RequestDispatcher req = request.getRequestDispatcher("../index.jsp");
+                    req.forward(request, response);
+                }
+            } else {
+                RequestDispatcher req = request.getRequestDispatcher("login.jsp");
+			    req.forward(request, response);
+            } 
         } 
         %>
 
         <!-- GET display -->
-        <% if (request.getMethod().equalsIgnoreCase("POST")) { %>
-            <div class="forms">
+        <% if (request.getMethod().equalsIgnoreCase("GET")) { %>
+            <div class="forms" action="index.jsp">
                 <h1>Log In</h1>
                 <br /><br />
                 <form method="POST">

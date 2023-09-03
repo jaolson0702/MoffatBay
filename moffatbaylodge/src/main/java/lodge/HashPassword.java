@@ -58,7 +58,7 @@ public class HashPassword {
     }
 
     // Validate a password entered by user against and existing hash
-    boolean validatePassword(final String originalPassword, final String storedPasswordHash) 
+    public boolean validatePassword(final String originalPassword, final String storedPasswordHash) 
         throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         // Split the string by :
@@ -105,10 +105,10 @@ public class HashPassword {
         throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchProviderException, FileNotFoundException, IOException {
             HashPassword hashPassword = new HashPassword();
 
-			String strongPwdHash = hashPassword.generateStrongPasswordHash("password123");
+			String strongPwdHash = hashPassword.generateStrongPasswordHash("$ummeR2026");
 			System.out.println(strongPwdHash);
 			
-			boolean matchResult = hashPassword.validatePassword("password123", strongPwdHash);
+			boolean matchResult = hashPassword.validatePassword("$ummeR2026", strongPwdHash);
 			System.out.println("matchResult "+matchResult);
 	}
 }

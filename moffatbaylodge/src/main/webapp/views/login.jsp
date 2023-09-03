@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
 <%@page import="lodge.beans.Customer"%>
-<%@page import="HashPassword" %>
-<jsp:useBean
-  id="dataManager"
-  scope="application"
-  class="lodge.models.DataManager"
-/>
+<%@page import="lodge.models.DataManager"%>
+<%@page import="lodge.HashPassword"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,14 +43,13 @@
         <% if (request.getMethod().equalsIgnoreCase("POST")) { 
             String email = request.getParameter("email"); 
             String password = request.getParameter("password");
-            HashPassword hp = new HashPassword();
 
             if (!email.isEmpty() || !password.isEmpty()) {
                 HashPassword hp = new HashPassword();
                 Customer customer = dataManager.getCustomerLogin(request.getParameter("email"));
 
                 if (hp.validatePassword(password, customer.getPassword())) {
-                    RequestDispatcher req = request.getRequestDispatcher("login.jsp");
+                    RequestDispatcher req = request.getRequestDispatcher("../index.jsp");
                     req.forward(request, response);
                 }
             } else {
@@ -64,7 +60,7 @@
         %>
 
         <!-- GET display -->
-        <% if (request.getMethod().equalsIgnoreCase("POST")) { %>
+        <% if (request.getMethod().equalsIgnoreCase("GET")) { %>
             <div class="forms" action="index.jsp">
                 <h1>Log In</h1>
                 <br /><br />

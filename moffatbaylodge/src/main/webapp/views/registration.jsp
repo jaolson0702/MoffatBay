@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%> <%@page import="lodge.beans.Customer"%>
+pageEncoding="ISO-8859-1"%> 
+<%@page import="lodge.beans.Customer"%>
 <%@page import="lodge.models.DataManager"%>
+<%@page import="lodge.HashPassword"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,13 +18,18 @@ pageEncoding="ISO-8859-1"%> <%@page import="lodge.beans.Customer"%>
   </head>
   <body>
     <%@ include file = "dbinit.jsp" %>
-    <% if (request.getMethod().equalsIgnoreCase("POST")) { Customer customer =
-    new Customer(); customer.setFirstName(request.getParameter("firstname"));
-    customer.setLastName(request.getParameter("lastname"));
-    customer.setEmail(request.getParameter("email"));
-    customer.setPhoneNumber(request.getParameter("phone"));
-    customer.setPassword(request.getParameter("psw"));
-    dataManager.insertCustomer(customer); } %>
+    <% if (request.getMethod().equalsIgnoreCase("POST")) { 
+      HashPassword hp = new HashPassword();
+      Customer customer = new Customer(); 
+      customer.setFirstName(request.getParameter("firstname"));
+      customer.setLastName(request.getParameter("lastname"));
+      customer.setEmail(request.getParameter("email"));
+      customer.setPhoneNumber(request.getParameter("phone"));
+      customer.setPassword(hp.generateStrongPasswordHash(request.getParameter("psw")));
+      dataManager.insertCustomer(customer); 
+      } 
+    %>
+
     <div class="container">
       <header>
         <img src="../images/header.jpg" alt="Moffat Bay Sunset" />
