@@ -8,6 +8,7 @@ pageEncoding="ISO-8859-1"%>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,7 +56,7 @@ pageEncoding="ISO-8859-1"%>
 
     <div class="container">
       <header>
-        <img src="../images/header.jpg" alt="Moffat Bay Sunset" />
+        <img src="<%=request.getContextPath()%>/images/header.jpg" alt="Moffat Bay Sunset" />
         <div class="header-text">Moffat Bay Lodge</div>
       </header>
 
@@ -103,7 +104,7 @@ pageEncoding="ISO-8859-1"%>
 
       <footer>
         <div id="logo">
-          <img src="../images/logo.png" alt="Logo" />
+          <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo" />
           <br /><br />
           (c) 2023 DELTA
         </div>
@@ -127,11 +128,11 @@ pageEncoding="ISO-8859-1"%>
                 out.print("<a href=\"login.jsp\">Log In</a>");
             }
             %>
-          <a href="https://www.facebook.com/"><img src="../images/fb.png" /></a>
+          <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" /></a>
           <a href="https://www.instagram.com/"
-            ><img src="../images/ig.png"
+            ><img src="<%=request.getContextPath()%>/images/ig.png"
           /></a>
-          <a href="https://www.youtube.com/"><img src="../images/yt.png" /></a>
+          <a href="https://www.youtube.com/"><img src="<%=request.getContextPath()%>/images/yt.png" /></a>
         </div>
       </footer>
     </div>

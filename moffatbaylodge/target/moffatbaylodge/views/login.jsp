@@ -8,6 +8,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -22,7 +23,7 @@
         
         <div class="container">
         <header>
-            <img src="../images/header.jpg" alt="Moffat Bay Sunset" />
+            <img src="<%=request.getContextPath()%>/images/header.jpg" alt="Moffat Bay Sunset" />
             <div class="header-text">Moffat Bay Lodge</div>
         </header>
 
@@ -37,7 +38,7 @@
             <a href="registration.jsp">Registration</a>
             <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"index.jsp\">Log Out</a>");
+                out.print("<a href=\"../index.jsp\">Log Out</a>");
             } else {
                 out.print("<a href=\"login.jsp\">Log In</a>");
             }
@@ -50,35 +51,33 @@
             String email = request.getParameter("username"); 
             String password = request.getParameter("password");
 
-            if (!email.isEmpty() || !password.isEmpty()) {
                 HashPassword hp = new HashPassword();
                 Customer customer = dataManager.getCustomerLogin(request.getParameter("username"));
 
-                if (hp.validatePassword(password, customer.getPassword())) {
+                if (customer != null && hp.validatePassword(password, customer.getPassword())) {
                     session.setAttribute("userid", customer.getId());
+                    session.setAttribute("username", customer.getEmail());
                     session.setAttribute("uname", customer.getFirstName());
-                    
                     RequestDispatcher req = request.getRequestDispatcher("../index.jsp");
                     req.forward(request, response);
                 }
-            } else { 
-                %>
-                <script>
-                    window.alert("The email is invalid.");
-                </script>
+                else {
+                    %>
+                    <script>
+                        window.alert("Invalid username and/or password");
+                    </script>
                 <%
-                RequestDispatcher req = request.getRequestDispatcher("login.jsp");
-			    req.forward(request, response);
-            } 
-        } 
+                request.setAttribute("redo", "yes");
+                }
+            }
         %>
 
         <!-- GET display -->
-        <% if (request.getMethod().equalsIgnoreCase("GET")) { %>
-            <div class="forms" action="login.jsp">
+        <% if (request.getMethod().equalsIgnoreCase("GET") || request.getAttribute("redo") == "yes") { %>
+            <div class="forms">
                 <h1>Log In</h1>
                 <br /><br />
-                <form method="POST">
+                <form method="POST" action="login.jsp">
                 <input type="text" placeholder="Enter Username" name="username" required/>
                 <br /><br />
                 <input type="password" placeholder="Enter Password" name="password" required/>
@@ -92,7 +91,7 @@
 
         <footer>
             <div id="logo">
-            <img src="../images/logo.png" alt="Logo" />
+            <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo" />
             <br /><br />
             (c) 2023 DELTA
             </div>
@@ -111,16 +110,16 @@
             <a href="registration.html">Registration | </a>
             <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"index.jsp\">Log Out</a>");
+                out.print("<a href=\"../index.jsp\">Log Out</a>");
             } else {
                 out.print("<a href=\"login.jsp\">Log In</a>");
             }
             %>
-            <a href="https://www.facebook.com/"><img src="../images/fb.png" /></a>
+            <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" /></a>
             <a href="https://www.instagram.com/"
-                ><img src="../images/ig.png"
+                ><img src="<%=request.getContextPath()%>/images/ig.png"
             /></a>
-            <a href="https://www.youtube.com/"><img src="../images/yt.png" /></a>
+            <a href="https://www.youtube.com/"><img src="<%=request.getContextPath()%>/images/yt.png" /></a>
             </div>
         </footer>
         </div>
