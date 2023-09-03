@@ -3,6 +3,7 @@ pageEncoding="ISO-8859-1"%>
 <%@page import="lodge.beans.Customer"%>
 <%@page import="lodge.models.DataManager"%>
 <%@page import="lodge.HashPassword"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>

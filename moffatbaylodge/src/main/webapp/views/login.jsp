@@ -49,12 +49,20 @@
                 Customer customer = dataManager.getCustomerLogin(request.getParameter("username"));
 
                 if (hp.validatePassword(password, customer.getPassword())) {
+                    session.setAttribute("userid", customer.getId());
+                    session.setAttribute("uname", customer.getFirstName());
+                    
                     RequestDispatcher req = request.getRequestDispatcher("../index.jsp");
                     req.forward(request, response);
                 }
-            } else {
-                RequestDispatcher req = request.getRequestDispatcher("login.jsp");
-			    req.forward(request, response);
+            } else { 
+                %>
+                <script>
+                    window.alert("The email is invalid.");
+                </script>
+                <%
+                //RequestDispatcher req = request.getRequestDispatcher("login.jsp");
+			    //req.forward(request, response);
             } 
         } 
         %>
