@@ -5,6 +5,7 @@
  * Adapted from: Beginning Jakarta EE Web Development, Third Edition - 2020 - Authors: Luciano Manelli, Giulio Zambon
  *      Accessed 9/2/2023
  * 
+ * TODO: Validate password using HashPassword
  * TODO: Update doPost method
  */
 
@@ -16,6 +17,7 @@ import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lodge.beans.Customer;
 import lodge.models.DataManager;
 
 @WebServlet(name = "LodgeServlet", urlPatterns = {"/lodge/*"})
@@ -53,36 +55,32 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
         doPost(request, response);
     }
 
-    // TODO: Update for Registration and Login
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-        String base = "/jsp/";
-        String url = base + "index.jsp";
+        String base = "/views/";
+        String url = "index.html";
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                case "search": 
-                    url = base + "SearchOutcome.jsp";
+                case "login": 
+                    url = base + "login.html";
                     break;
-                case "selectCatalog":
-                    url = base + "SelectCatalog.jsp";
-                    break;
-                case "bookDetails":
-                    url = base + "BookDetails.jsp";
-                    break;
-                case "checkOut":
-                    url = base + "Checkout.jsp";
-                    break;
-                case "orderConfirmation":
-                    url = base + "OrderConfirmation.jsp";
+                case "registration":
+                    url = base + "registration.html";
+                    Customer c = new Customer();
+                    c.setFirstName(request.getParameter("firstname"));
+                    c.setLastName(request.getParameter("lastname"));
+                    c.setEmail(request.getParameter("email"));
+                    c.setPhoneNumber(request.getParameter("phone"));
+                    c.setPassword(request.getParameter("psw"));
+                    c.insertCustomer();
                     break;
                 default:
-                    if (action.matches("(showCart|(add|update|delete)Item)"))
-                        url = base + "ShoppingCart.jsp";
                     break;
             }
         }
-    RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
         requestDispatcher.forward(request, response);
     }
 }
