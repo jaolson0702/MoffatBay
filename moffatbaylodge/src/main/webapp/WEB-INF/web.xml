@@ -4,6 +4,23 @@
 
  <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+	<param-name>dbURL</param-name>
+	<param-value>jdbc:mysql://localhost:3306/moffatbay?serverTimezone=UTC</param-value>
+  </context-param>
+  <context-param>
+	<param-name>dbUserName</param-name>
+	<param-value>root</param-value>
+  </context-param>
+  <context-param>
+	<param-name>dbPassword</param-name>
+	<param-value>root</param-value>
+  </context-param>
+  <context-param>
+	<param-name>jdbcDriver</param-name>
+	<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  <!--
   <servlet>
 		<servlet-name>LodgeServlet</servlet-name>
 		<servlet-class>lodge.LodgeServlet</servlet-class>
@@ -21,7 +38,7 @@
 		</init-param>
 		<init-param>
 			<param-name>dbURL</param-name>
-			<param-value>jdbc:mysql://localhost:3306/shop?serverTimezone=UTC</param-value>
+			<param-value>jdbc:mysql://localhost:3306/moffatbaylodge?serverTimezone=UTC</param-value>
 		</init-param>
 		<init-param>
 			<param-name>dbUserName</param-name>
@@ -32,4 +49,5 @@
 			<param-value>root</param-value>
 		</init-param>
 	</servlet>
+	-->
 </web-app>
