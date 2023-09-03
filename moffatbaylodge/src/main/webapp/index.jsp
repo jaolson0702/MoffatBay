@@ -29,7 +29,13 @@ pageEncoding="ISO-8859-1"%>
 
         <div class="account">
           <a href="views/registration.jsp">Registration</a>
-          <a href="views/login.jsp">Log In</a>
+          <% 
+            if (session.getAttribute("username") != null) {
+                out.print("<a href=\"views/index.jsp\">Log Out</a>");
+            } else {
+                out.print("<a href=\"views/login.jsp\">Log In</a>");
+            }
+            %>
         </div>
       </div>
 
@@ -56,7 +62,13 @@ pageEncoding="ISO-8859-1"%>
 
         <div id="socials">
           <a href="views/registration.html">Registration | </a>
-          <a href="views/login.html">Log In</a>
+          <% 
+            if (session.getAttribute("username") != null) {
+                out.print("<a href=\"views/index.jsp\">Log Out</a>");
+            } else {
+                out.print("<a href=\"views/login.jsp\">Log In</a>");
+            }
+            %>
           <a href="https://www.facebook.com/"><img src="images/fb.png" /></a>
           <a href="https://www.instagram.com/"><img src="images/ig.png" /></a>
           <a href="https://www.youtube.com/"><img src="images/yt.png" /></a>

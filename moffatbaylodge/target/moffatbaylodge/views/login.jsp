@@ -35,7 +35,13 @@
 
             <div class="account">
             <a href="registration.jsp">Registration</a>
-            <a href="login.jsp">Log In</a>
+            <% 
+            if (session.getAttribute("username") != null) {
+                out.print("<a href=\"index.jsp\">Log Out</a>");
+            } else {
+                out.print("<a href=\"login.jsp\">Log In</a>");
+            }
+            %>
             </div>
         </div>
 
@@ -61,15 +67,15 @@
                     window.alert("The email is invalid.");
                 </script>
                 <%
-                //RequestDispatcher req = request.getRequestDispatcher("login.jsp");
-			    //req.forward(request, response);
+                RequestDispatcher req = request.getRequestDispatcher("login.jsp");
+			    req.forward(request, response);
             } 
         } 
         %>
 
         <!-- GET display -->
         <% if (request.getMethod().equalsIgnoreCase("GET")) { %>
-            <div class="forms" action="index.jsp">
+            <div class="forms" action="login.jsp">
                 <h1>Log In</h1>
                 <br /><br />
                 <form method="POST">
@@ -103,7 +109,13 @@
 
             <div id="socials">
             <a href="registration.html">Registration | </a>
-            <a href="login.html">Log In</a>
+            <% 
+            if (session.getAttribute("username") != null) {
+                out.print("<a href=\"index.jsp\">Log Out</a>");
+            } else {
+                out.print("<a href=\"login.jsp\">Log In</a>");
+            }
+            %>
             <a href="https://www.facebook.com/"><img src="../images/fb.png" /></a>
             <a href="https://www.instagram.com/"
                 ><img src="../images/ig.png"
