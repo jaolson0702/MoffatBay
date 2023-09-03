@@ -8,9 +8,6 @@
 
 package lodge.models;
 
-import java.util.Hashtable;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
