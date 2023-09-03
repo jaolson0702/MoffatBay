@@ -15,20 +15,13 @@ pageEncoding="ISO-8859-1"%> <%@page import="lodge.beans.Customer"%>
     <title>Registration | Moffat Bay Lodge</title>
   </head>
   <body>
-  <%@ include file = "dbinit.jsp" %>
+    <%@ include file = "dbinit.jsp" %>
     <% if (request.getMethod().equalsIgnoreCase("POST")) { Customer customer =
     new Customer(); customer.setFirstName(request.getParameter("firstname"));
     customer.setLastName(request.getParameter("lastname"));
     customer.setEmail(request.getParameter("email"));
     customer.setPhoneNumber(request.getParameter("phone"));
     customer.setPassword(request.getParameter("psw"));
-    /*
-    Class.forName(getServletContext().getInitParameter("jdbcDriver"));
-    DataManager dataManager = new DataManager();
-    dataManager.setDbURL(getServletContext().getInitParameter("dbURL"));
-    dataManager.setDbUserName(getServletContext().getInitParameter("dbUserName"));
-    dataManager.setDbPassword(getServletContext().getInitParameter("dbPassword"));
-    */
     dataManager.insertCustomer(customer); } %>
     <div class="container">
       <header>
