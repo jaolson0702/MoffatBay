@@ -25,7 +25,7 @@
         </header>
 
         <div id="navbar">
-            <a href="#">Home</a>
+            <a href="../index.jsp">Home</a>
             <a href="aboutus.html">About Us</a>
             <a href="book.html">Book</a>
             <a href="attractions.html">Attractions</a>
