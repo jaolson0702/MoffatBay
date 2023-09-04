@@ -71,9 +71,9 @@ pageEncoding="ISO-8859-1"%>
           <a href="registration.jsp">Registration</a>
           <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"index.jsp\">Log Out</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/logout.jsp\">Log Out</a>");
             } else {
-                out.print("<a href=\"login.jsp\">Log In</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/login.jsp\">Log In</a>");
             }
             %>
         </div>
@@ -123,9 +123,9 @@ pageEncoding="ISO-8859-1"%>
           <a href="registration.html">Registration | </a>
           <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"index.jsp\">Log Out</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/logout.jsp\">Log Out</a>");
             } else {
-                out.print("<a href=\"login.jsp\">Log In</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/login.jsp\">Log In</a>");
             }
             %>
           <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" /></a>

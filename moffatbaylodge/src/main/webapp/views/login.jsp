@@ -11,10 +11,7 @@
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Gloock&display=swap"
-        rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
 
         <title>Log In | Moffat Bay Lodge</title>
     </head>
@@ -38,9 +35,9 @@
             <a href="registration.jsp">Registration</a>
             <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"../index.jsp\">Log Out</a>");
+                out.print("<a href=\"." + request.getContextPath() + "/views/logout.jsp\">Log Out</a>");
             } else {
-                out.print("<a href=\"login.jsp\">Log In</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/login.jsp\">Log In</a>");
             }
             %>
             </div>
@@ -110,9 +107,9 @@
             <a href="registration.html">Registration | </a>
             <% 
             if (session.getAttribute("username") != null) {
-                out.print("<a href=\"../index.jsp\">Log Out</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/logout.jsp\">Log Out</a>");
             } else {
-                out.print("<a href=\"login.jsp\">Log In</a>");
+                out.print("<a href=\"" + request.getContextPath() + "/views/login.jsp\">Log In</a>");
             }
             %>
             <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" /></a>
