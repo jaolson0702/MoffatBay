@@ -4,7 +4,7 @@
  * Adapted from: https://reflectoring.io/creating-hashes-in-java/ - November 21, 2021 - Author: Pratik Das
  *      Accessed 9/1/2023-Only used code for PBKDF2WithHmacSHA1 segment, renamed class to HashPassword from HashCreator
  */
-package lodge; 
+package lodge;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -105,10 +105,10 @@ public class HashPassword {
         throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchProviderException, FileNotFoundException, IOException {
             HashPassword hashPassword = new HashPassword();
 
-			String strongPwdHash = hashPassword.generateStrongPasswordHash("$ummeR2026");
+			String strongPwdHash = hashPassword.generateStrongPasswordHash("password123");
 			System.out.println(strongPwdHash);
 			
-			boolean matchResult = hashPassword.validatePassword("$ummeR2026", strongPwdHash);
+			boolean matchResult = hashPassword.validatePassword("password123", strongPwdHash);
 			System.out.println("matchResult "+matchResult);
 	}
 }

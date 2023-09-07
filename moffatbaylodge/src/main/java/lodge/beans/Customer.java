@@ -1,7 +1,6 @@
 /* Team Delta
  * Authors: Bryce Kellas
  * 
- * TODO: Add methods for necessary database operations, insert and select with email
  */
 package lodge.beans;
 

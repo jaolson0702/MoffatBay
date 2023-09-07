@@ -1,4 +1,5 @@
 <%
+String base = (String)application.getAttribute("base");
 session.invalidate();
-response.sendRedirect("../index.jsp");
+response.sendRedirect(base + "?action=home");
 %>

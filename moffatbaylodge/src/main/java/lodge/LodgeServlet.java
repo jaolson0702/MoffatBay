@@ -1,14 +1,10 @@
 /* Team Delta
  * Authors: Bryce Kellas
  * 
- * Servlet controller to handle requests
+ * Servlet controller to decides URL to navigate to based on the links clicked in header and footer
  * Adapted from: Beginning Jakarta EE Web Development, Third Edition - 2020 - Authors: Luciano Manelli, Giulio Zambon
  *      Accessed 9/2/2023
- * 
- * TODO: Validate password using HashPassword
- * TODO: Update doPost method
  */
-
 package lodge;
 
 import java.io.IOException;
@@ -19,23 +15,22 @@ import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lodge.beans.Customer;
 import lodge.models.DataManager;
 
-@WebServlet(name = "LodgeServlet", urlPatterns = {"/lodge/*"})
+@WebServlet(name = "LodgeServlet", urlPatterns = {"/*"})
 public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
   
-    //private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     public LodgeServlet() {
         super();
     }
 
-    private DataManager dataManager = new DataManager();
-
     public void init(ServletConfig config) throws ServletException {
         System.out.println("*** initializing controller servlet.");
         super.init(config);
+
+        DataManager dataManager = new DataManager();
         dataManager.setDbURL(config.getInitParameter("dbURL"));
         dataManager.setDbUserName(config.getInitParameter("dbUserName"));
         dataManager.setDbPassword(config.getInitParameter("dbPassword"));
@@ -46,7 +41,7 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
         context.setAttribute("dataManager", dataManager);
 
         try {  // load the database JDBC driver
-            Class.forName(getServletContext().getInitParameter("jdbcDriver"));
+            Class.forName(config.getInitParameter("jdbcDriver"));
         }
         catch (ClassNotFoundException e) {
             System.out.println(e.toString());
@@ -55,34 +50,56 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
+        //RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+        //req.forward(request, response);
     }
 
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+        
+        // Default URL for home page
         String base = "/views/";
-        String url = "index.html";
+        String url = "index.jsp";
+
+        // Decides URL to navigate to based on the links clicked in header and footer
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                case "login": 
-                    url = base + "login.jsp";
+                case "home": 
+                    url = "index.jsp";
                     break;
                 case "registration":
                     url = base + "registration.jsp";
-                    Customer c = new Customer();
-                    c.setFirstName(request.getParameter("firstname"));
-                    c.setLastName(request.getParameter("lastname"));
-                    c.setEmail(request.getParameter("email"));
-                    c.setPhoneNumber(request.getParameter("phone"));
-                    c.setPassword(request.getParameter("psw"));
-                    dataManager.insertCustomer(c);
                     break;
+                case "login":
+                    url = base + "login.jsp";
+                    break;
+                case "aboutus":
+                    url = base + "aboutus.jsp";
+                    break;
+                case "reservation":
+                    url = base + "reservation.jsp";
+                    break;
+                case "reservationlookup":
+                    url = base + "reservationlookup.jsp";
+                    break;
+                case "reservationsummary":
+                    url = base + "reservationsummary.jsp";
+                    break;
+                case "attractions":
+                    url = base + "attractions.jsp";
+                    break;
+                case "logout":
+                    url = base + "logout.jsp";
+                    break;
+                    
                 default:
+                    
                     break;
             }
         }
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
-        requestDispatcher.forward(request, response);
+        System.out.println("Navigating to "+url);
+        RequestDispatcher req = request.getRequestDispatcher(url);
+        req.forward(request, response);
     }
 }

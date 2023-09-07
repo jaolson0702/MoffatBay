@@ -23,7 +23,7 @@ public class CustomerPeer {
 			try {
 				Statement s = connection.createStatement();
 				String sql = "select id, first_name, last_name, email, phone, password from customers"
-					+ " where email=\'" + keyword.trim() + "\'";
+				+ " where email=\'" + keyword.trim() + "\'";
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					try {
@@ -44,7 +44,7 @@ public class CustomerPeer {
 				dataManager.putConnection(connection);
 			}
 		}
-    	return customer;
+		return customer;
 	}
   
   	public static Customer getCustomerById(DataManager dataManager, String customerID) {
