@@ -65,6 +65,17 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
             + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         boolean isCaseValid = StringUtils.isMixedCase(request.getParameter("psw"));
         
+        // Hash 
+        try {
+            customer.setPassword(hp.generateStrongPasswordHash(request.getParameter("psw")));
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidKeySpecException e) {
+            System.out.println(e.getMessage());
+        } catch (NoSuchProviderException e) {
+            System.out.println(e.getMessage());
+        }
+
         // Valid entries, meets requirements
         if (isCaseValid && emailIsValid && isPasswordLengthValid) {
             dm.insertCustomer(customer);
@@ -89,17 +100,6 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
             request.setAttribute("passwordcaseerror","Invalid Password: Must have at least one (1) uppercase and one (1) lowercase letter");
             RequestDispatcher rd=request.getRequestDispatcher("?action=register");            
             rd.include(request, response);
-        } 
-
-        // Hash 
-        try {
-            customer.setPassword(hp.generateStrongPasswordHash(request.getParameter("psw")));
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(e.getMessage());
-        } catch (InvalidKeySpecException e) {
-            System.out.println(e.getMessage());
-        } catch (NoSuchProviderException e) {
-            System.out.println(e.getMessage());
         }
         
     }
