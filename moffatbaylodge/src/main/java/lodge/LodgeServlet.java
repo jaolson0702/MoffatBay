@@ -1,4 +1,5 @@
 /* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
  * Authors: Bryce Kellas
  * 
  * Servlet controller to decides URL to navigate to based on the links clicked in header and footer

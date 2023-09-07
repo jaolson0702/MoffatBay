@@ -1,4 +1,5 @@
 /* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
  * Authors: Bryce Kellas, Jared Olson
  * 
  * Servlet controller to handle login requests and validations

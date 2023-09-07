@@ -1,4 +1,5 @@
 /* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
  * Authors: Bryce Kellas
  * Class to create a salted hash via "PBKDF2WithHmacSHA1" and validate a user entered password - 
  * Adapted from: https://reflectoring.io/creating-hashes-in-java/ - November 21, 2021 - Author: Pratik Das

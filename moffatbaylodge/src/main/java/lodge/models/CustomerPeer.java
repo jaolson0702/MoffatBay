@@ -1,4 +1,5 @@
 /* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
  * Authors: Bryce Kellas
  * 
  * Supplemental class to Customer. Handles connection to database
