@@ -62,14 +62,16 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
 
         // Email and Password Validations
         try {
-            validPassword = hp.validatePassword(password, customer.getPassword());
+            if (customer != null) {
+                validPassword = hp.validatePassword(password, customer.getPassword());
+            }
         } catch (NoSuchAlgorithmException e) {
             System.out.println(e.getMessage());
         } catch (InvalidKeySpecException e) {
             System.out.println(e.getMessage());
         }
 
-        if (customer != null && validPassword) {
+        if (validPassword) {
             session.setAttribute("userid", customer.getId());
             session.setAttribute("username", customer.getEmail());
             session.setAttribute("uname", customer.getFirstName());
