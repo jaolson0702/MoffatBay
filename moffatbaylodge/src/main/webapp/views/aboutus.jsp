@@ -24,6 +24,8 @@
                 background-color: white;
                 border: 1px solid black;
                 padding: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1em;
             }
             .main > .islandDesc {
                 display: flex;
@@ -49,7 +51,7 @@
                 align-items: center;
             }
             .main .teamPicture {
-                margin-left: 20%;
+                margin-left: 10%;
                 margin-right: 20%;
                 display: inline-block;
             }
@@ -70,10 +72,12 @@
                 </div>
                 <div class="teamPictures">
                     <div class="teamPicture">
+                        <img src="<%=request.getContextPath()%>/images/employee1.jpg" alt="Mary Beth Smith" />
                         <h4>Mary Beth Smith</h4>
                         <p>General Manager</p>
                     </div>
                     <div class="teamPicture">
+                        <img src="<%=request.getContextPath()%>/images/employee2.jpg" alt="Cheryl Deiro" />
                         <h4>Cheryl Deiro</h4>
                         <p>Director of Sales</p>
                     </div>

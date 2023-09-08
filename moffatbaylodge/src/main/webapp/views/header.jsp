@@ -24,11 +24,12 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
     <header>
+        <div id="banner">
         <img src="<%=request.getContextPath()%>/images/header.jpg" alt="Moffat Bay Sunset" />
-        <div class="header-text">Moffat Bay Lodge</div>
-    </header>
-
-    <div id="navbar">
+        <h1 class="header-text">Moffat Bay Lodge</h1>
+        </div>
+    
+        <div id="navbar">
         <a href="<%=base%>?action=home">Home</a>
         <a href="<%=base%>?action=aboutus">About Us</a>
         <a href="<%=base%>?action=reservation">Book</a>
@@ -45,7 +46,7 @@ pageEncoding="ISO-8859-1"%>
             }
             %>
         </div>
-    </div>
-
+        </div>
+    </header>
 </body>
 </html>

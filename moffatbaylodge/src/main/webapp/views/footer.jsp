@@ -23,24 +23,28 @@ pageEncoding="ISO-8859-1"%>
     <title>DELTA | CSD460</title>
 </head>
 <body>
+</body>
     
     <footer>
-        <div id="logo">
-        <img src="<%=request.getContextPath()%>/images/logo.png" alt="Logo" />
-        <br /><br />
-        (c) 2023 DELTA
-        </div>
-
-        <div id="flinks">
-        <a href="<%=base%>?action=home">Home</a>
-        <a href="<%=base%>?action=aboutus">About Us</a>
-        <a href="<%=base%>?action=reservation">Book</a>
-        <a href="<%=base%>?action=attractions">Attractions</a>
-        <a href="<%=base%>?action=reservationlookup">Reservation Lookup</a>
-        </div>
-
-        <div class="account"></div>
-        <div id="socials">
+        <table>
+            <colgroup>
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 30%;">
+            </colgroup>
+            <tr>
+            <td>
+            <h1>Moffat Bay Lodge</h1>
+            (c) 2023 DELTA
+            </td>
+            <td>
+            <a href="<%=base%>?action=home">Home</a><br>
+            <a href="<%=base%>?action=aboutus">About Us</a><br>
+            <a href="<%=base%>?action=reservation">Book</a><br>
+            <a href="<%=base%>?action=attractions">Attractions</a><br>
+            <a href="<%=base%>?action=reservationlookup">Reservation Lookup</a>
+            </td>
+            <td>
         <a href="views/registration.html">Registration | </a>
         <% 
             if (session.getAttribute("username") != null) {
@@ -49,11 +53,9 @@ pageEncoding="ISO-8859-1"%>
                 out.print("<a href=\"" + base + "?action=login\">Log In</a>");
             }
             %>
-        <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" /></a>
-        <a href="https://www.instagram.com/"><img src="<%=request.getContextPath()%>/images/ig.png" /></a>
-        <a href="https://www.youtube.com/"><img src="<%=request.getContextPath()%>/images/yt.png" /></a>
-        </div>
+            </td>
+        </tr>
+    </table>
     </footer>
 
-</body>
 </html>
