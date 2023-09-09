@@ -16,6 +16,7 @@ CREATE TABLE Rooms (
 	id int NOT NULL,
     room_size varchar(20) NOT NULL,
     available boolean NOT NULL,
+    price decimal NOT NULL,
     CONSTRAINT PK_Rooms PRIMARY KEY (id)
 );
 
