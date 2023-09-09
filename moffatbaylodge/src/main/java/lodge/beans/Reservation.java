@@ -1,3 +1,8 @@
+/* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
+ * Authors: Jared Olson
+ * 
+ */
 package lodge.beans;
 
 import java.io.Serializable;
@@ -12,6 +17,7 @@ public class Reservation implements Serializable {
     Date checkIn;
     Date checkOut;
 
+    // Constructor
     public Reservation() {
         this.id = 0;
         this.roomsId = 0;
@@ -21,6 +27,7 @@ public class Reservation implements Serializable {
         this.checkOut = Date.valueOf(LocalDate.now());
     }
 
+    // Getters and Setters
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
     public int getRoomsId() {return roomsId;}
