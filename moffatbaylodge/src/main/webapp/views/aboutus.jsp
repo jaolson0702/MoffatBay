@@ -17,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
 
-        <title>Log In | Moffat Bay Lodge</title>
+        <title>About Us | Moffat Bay Lodge</title>
 
         <style type="text/css">
             .main {

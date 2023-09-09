@@ -29,8 +29,8 @@ pageEncoding="ISO-8859-1"%>
         <table>
             <colgroup>
                 <col span="1" style="width: 40%;">
-                <col span="1" style="width: 30%;">
-                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 20%;">
             </colgroup>
             <tr>
             <td>
