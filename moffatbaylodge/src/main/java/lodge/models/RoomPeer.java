@@ -41,8 +41,7 @@ public class RoomPeer {
 						while (rs.next()) {
 							r.setId(rs.getInt(1));
 							r.setRoomSize(rs.getString(2));
-							r.setAvailable(rs.getBoolean(3));
-							r.setPrice(rs.getBigDecimal(4));
+							r.setPrice(rs.getBigDecimal(3));
                             rooms.add(r);
 						}
 					} finally { rs.close(); }
