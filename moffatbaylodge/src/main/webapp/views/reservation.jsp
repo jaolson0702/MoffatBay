@@ -20,21 +20,51 @@
         />
 
         <title>Reservation | Moffat Bay Lodge</title>
+
+        <style type="text/css">
+            .resform {
+                background-color: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1em;
+                width: 80%;
+                text-align: center;
+                margin-top: 5%;
+                margin-bottom: 10%;
+                margin-left: 10%;
+                padding: 10px;
+                box-shadow: 5px 5px 5px lightgrey;
+            }
+
+            .resform > h1 {
+                text-align: left;
+            }
+
+            .button {
+                background-color: #000000;
+                color: #FFB287;
+                text-align: center;
+                text-decoration: none;
+                font-size: 1em;
+                padding: 10px;
+                border-radius: 4px;
+            }
+        </style>
     </head>
     <body>
 
         <div class="container">
             <%@ include file = "header.jsp" %>
 
-            <div class="forms">
+            <div class="resform">
                 <h1>Reservation</h1>
-                <br /><br />
-
+        
                 <form method="POST" action="reservation">
            
-                <input type="date" name="checkin" placeholder="Check-In Date" required /> 
-                <input type="date" name="checkout" placeholder="Check-Out Date" required />
-                <label for="guestcount">Guest Count</label>
+                <label for="checkin"> Check-In </label>
+                <input type="date">   
+                <label for="checkin"> Check-Out </label>
+                <input type="date">   
+                <label for="guestcount"> Guest Count </label>
                 <select name="guestcount" id="guestcount">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -42,14 +72,14 @@
                   <option value="4">4</option>                      
                   <option value="5">5</option>
                 </select>
-                <label for="roomsize">Room Size</label>
+                <label for="roomsize"> Room Size </label>
                 <select name="roomsize" id="roomsize">
                   <option value="double full">Double Full</option>
                   <option value="queen">Queen</option>
                   <option value="double queen">Double Queen </option>
                   <option value="king">King</option>                      
-                </select>
-                <button type="submit" class="reviewbtn">Review</button>
+                </select>   
+                <button type="submit" class="button">Review</button>
                 </form>
             </div>
 
