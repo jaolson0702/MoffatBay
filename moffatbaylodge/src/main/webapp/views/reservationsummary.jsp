@@ -34,7 +34,7 @@
                 <h1>Reservation Summary</h1>
                 <br /><br />
 
-                <form method="POST" action="reservation">
+                <form method="POST" action="book/summary">
            
                 <label type="date">Check-In Date</label> 
                 <label type="date"><%=res.getCheckIn()%></label>
@@ -51,8 +51,8 @@
                 <label type="total">Total</label>
                 <label type="total"><%=room.getPrice()%></label>
 
-                <button type="submit" class="backbtn">Go Back</button>
-                <button type="submit" class="reviewbtn">Submit</button>
+                <button type="submit" name="cancel" class="backbtn">Go Back</button>
+                <button type="submit" name="submit" class="reviewbtn">Submit</button>
                 </form>
             </div>
 
