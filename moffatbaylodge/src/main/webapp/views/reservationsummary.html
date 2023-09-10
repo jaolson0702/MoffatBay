@@ -2,14 +2,7 @@
     Team Delta
     Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
 -->
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%> 
-    <%@page import="lodge.beans.Customer"%>
-    <%@page import="lodge.models.DataManager"%>
-<%
-    Reservation res = request.getAttribute("reservation");
-    Room room = request.getAttribute("room");
-%>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -54,35 +47,34 @@
     <body>
 
         <div class="container">
-            <%@ include file = "header.jsp" %>
-
+          
             <div class="summaryForm">
                 <h1>Reservation Summary</h1>
-                <br /><br />
-
-                <form method="POST" action="book/summary">
+                <br><br>
+            
+                <form method="POST" action="reservation">
            
-                <label type="date">Check-In Date</label> 
-                <label type="date"><%=res.getCheckIn()%></label>
-                <br/>
-                <label type="date">Check-Out Date</label>
-                <label type="date"><%=res.getCheckOut()%></label>
-                <br/>
-                <label type="guestcount">Guest Count</label>
-                <label type="guestcount"><%=res.getGuestCount()%></label>
-                <br/>
-                <label type="roomtype">Room Size</label>
-                <label type="roomtype"><%=room.getRoomSize()%></label>
-                <br/><br/>
-                <label type="total">Total</label>
-                <label type="total">Total</label>
-
+                <label type="date">Check-In Date:</label> 
+                <label type="date">11/21/2023</label>
+                <br>
+                <label type="date">Check-Out Date:</label>
+                <label type="date">11/24/2023</label>
+                <br>
+                <label type="guestcount">Guest Count: </label>
+                <label type="guestcount">2</label>
+                <br>
+                <label type="roomtype">Room Size: </label>
+                <label type="roomtype">King</label>
+                <br><br>
+                <label type="total">TOTAL: </label>
+                <label type="total">$472.50</label>
+                <br><br><br>
                 <button type="submit" class="button">Go Back</button>
                 <button type="submit" class="button">Submit</button>
                 </form>
             </div>
 
-            <%@ include file = "footer.jsp" %>
+           
         </div>
     </body>
     </html>
