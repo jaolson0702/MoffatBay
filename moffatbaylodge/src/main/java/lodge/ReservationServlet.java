@@ -57,20 +57,23 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
         if (request.getAttribute("reservation") == null && session.getAttribute("username") != null) {
+            System.out.println(request.getParameter("checkin"));
+            System.out.println(request.getParameter("checkout"));
             Date checkIn = Date.valueOf(request.getParameter("checkin"));
             Date checkOut = Date.valueOf(request.getParameter("checkout"));
             String roomType = request.getParameter("roomsize");
-            ArrayList<Room> availableRooms = new ArrayList<Room>();
+            ArrayList<Room> availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+            Room room = new Room();
 
             try {
-                availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+                room = availableRooms.get(0);
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Did not find any available rooms: " + e.getMessage());
                 request.setAttribute("roomerror","No "+ roomType + "rooms are available");
                 RequestDispatcher req = request.getRequestDispatcher("?action=reservation");
                 req.include(request, response);
             }
-            Room room = availableRooms.get(0);
+            
             
             // Set Reservation values from user input
             Reservation reservation = new Reservation();
@@ -80,9 +83,9 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
             reservation.setCustomersId((int)session.getAttribute("userid"));
             reservation.setGuestCount(request.getParameter("guestcount"));
 
-            System.out.println("Set request");
             request.setAttribute("reservation", reservation);
             request.setAttribute("room", room);
+            System.out.println("Set request" + reservation.getId());
 
             // Display confirmation
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationsummary");
