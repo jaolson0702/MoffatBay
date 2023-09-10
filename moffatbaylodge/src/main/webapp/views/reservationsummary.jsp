@@ -49,7 +49,7 @@
                 <label type="roomtype"><%=room.getRoomSize()%></label>
 
                 <label type="total">Total</label>
-                <label type="total">Total</label>
+                <label type="total"><%=room.getPrice()%></label>
 
                 <button type="submit" class="backbtn">Go Back</button>
                 <button type="submit" class="reviewbtn">Submit</button>
