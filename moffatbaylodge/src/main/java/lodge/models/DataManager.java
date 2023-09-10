@@ -20,9 +20,6 @@ import lodge.beans.Customer;
 import lodge.beans.Reservation;
 import lodge.beans.Room;
 
-//import lodge.beans.Booking;
-//import lodge.beans.Room;
-
 public class DataManager {
     private String dbURL = "";
     private String dbUserName = "";
@@ -67,20 +64,25 @@ public class DataManager {
     }
 
     //---------- Booking operations ----------
-    /*
-    public String getBookingName(String categoryID) {
-        Booking category = BookingPeer.getBookingById(this, categoryID);
-        return (category == null) ? null : category.getName();
+    public void insertReservation(Reservation reservation) {
+        try {
+            Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ReservationPeer.insertReservation(stmt, reservation);
+        }
+        catch (SQLException e) {
+            System.out.println("Could not insert reservation: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    public Hashtable<String, String> getBookings() {
-        return BookingPeer.getAllBookings(this);
+    public Room getRoom(int roomId) {
+        return RoomPeer.getRoomById(this, roomId);
     }
 
-    public Enumeration<String> getCatIDs() {
-        return BookingPeer.getAllBookings(this).keys();
+    public ArrayList<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
+        return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
     }
-    */
 
     //---------- Customer operations ----------
     public Customer getCustomerLogin(String email) {
@@ -121,25 +123,5 @@ public class DataManager {
                 putConnection(connection);
             }
         }
-    }
-
-    public void insertReservation(Reservation reservation) {
-        try {
-            Connection connection = getConnection();
-            Statement stmt = connection.createStatement();
-            ReservationPeer.insertReservation(stmt, reservation);
-        }
-        catch (SQLException e) {
-            System.out.println("Could not insert reservation: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public Room getRoom(int roomId) {
-        return RoomPeer.getRoomById(this, roomId);
-    }
-
-    public ArrayList<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
-        return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
     }
 }
