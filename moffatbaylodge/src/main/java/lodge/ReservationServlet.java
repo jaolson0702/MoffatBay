@@ -12,19 +12,16 @@ package lodge;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lodge.beans.Customer;
 import lodge.models.DataManager;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import java.sql.Date;
 
@@ -56,23 +53,27 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-        // Set dataManager and pasword hasher
+        // Set dataManager and password hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
         if (request.getAttribute("reservation") == null && session.getAttribute("username") != null) {
+            Date checkIn = Date.valueOf(request.getParameter("checkin"));
+            Date checkOut = Date.valueOf(request.getParameter("checkout"));
+            System.out.println(checkIn);
+            System.out.println(checkIn);
+            String roomType = request.getParameter("roomsize");
+            ArrayList<Room> availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+            Room room = availableRooms.get(0);
             
-            // Display rooms
-            List<Room> availableRooms = dm.getAvailableRooms((Date)request.getAttribute("checkin"), (Date)request.getAttribute("checkout"), (String)request.getAttribute("roomsize"));
-
+            // Set Reservation values from user input
             Reservation reservation = new Reservation();
             reservation.setCheckIn(request.getParameter("checkin"));
             reservation.setCheckOut(request.getParameter("checkout"));
-            reservation.setRoomsId(availableRooms.get(0).getId());
+            reservation.setRoomsId(room.getId());
             reservation.setCustomersId((int)session.getAttribute("userid"));
             reservation.setGuestCount(request.getParameter("guestcount"));
 
-            Room room = dm.getRoom(reservation.getRoomsId());
-
+            System.out.println("Set request");
             request.setAttribute("reservation", reservation);
             request.setAttribute("room", room);
 
