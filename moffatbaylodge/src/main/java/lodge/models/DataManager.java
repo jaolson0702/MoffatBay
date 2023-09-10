@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 import lodge.beans.Customer;
 import lodge.beans.Reservation;
@@ -139,7 +139,7 @@ public class DataManager {
         return RoomPeer.getRoomById(this, roomId);
     }
 
-    public List<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
+    public ArrayList<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
         return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
     }
 }
