@@ -11,6 +11,7 @@
 package lodge;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
@@ -27,6 +28,7 @@ import lodge.models.DataManager;
 import java.util.List;
 
 import java.sql.Date;
+import java.time.Period;
 
 import lodge.beans.Room;
 import lodge.beans.Reservation;
@@ -59,10 +61,13 @@ public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet 
         // Set dataManager and pasword hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
-        String action = request.getParameter("action");
+        String action = request.getParameter("name");
 
         if (action.equals("submit")) {
             Reservation reservation = (Reservation)request.getAttribute("reservation");
+            Room room = (Room)request.getAttribute("room");
+            BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(reservation.getNumberOfNights()));
+            request.setAttribute("total", total.toString());
 
             dm.insertReservation(reservation);
             RequestDispatcher req = request.getRequestDispatcher("?action=home");

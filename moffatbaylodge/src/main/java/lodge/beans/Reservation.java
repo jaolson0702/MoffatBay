@@ -16,6 +16,7 @@ public class Reservation implements Serializable {
     int guestCount;
     Date checkIn;
     Date checkOut;
+    int numberOfNights;
 
     // Constructor
     public Reservation() {
@@ -25,6 +26,7 @@ public class Reservation implements Serializable {
         this.guestCount = 0;
         this.checkIn = Date.valueOf(LocalDate.now());
         this.checkOut = Date.valueOf(LocalDate.now());
+        this.numberOfNights = 0;
     }
 
     // Getters and Setters
@@ -44,4 +46,6 @@ public class Reservation implements Serializable {
     public Date getCheckOut() {return checkOut;}
     public void setCheckOut(String checkOut) {this.checkOut = Date.valueOf(checkOut);}
     public void setCheckOut(Date checkOut) {this.checkOut = checkOut;}
+    public int getNumberOfNights() { return this.numberOfNights; }
+    public void setNumberOfNights(int numberOfNights) {this.numberOfNights = numberOfNights;}
 }

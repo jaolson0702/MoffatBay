@@ -55,7 +55,7 @@ public class ReservationPeer {
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "id, rooms_id, customers_id, guest_count, check_in, check_out from reservations"
+				String sql = "id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from reservations"
 					    + " where id=" + reservationID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
@@ -67,6 +67,7 @@ public class ReservationPeer {
                         reservation.setGuestCount(rs.getInt(4));
                         reservation.setCheckIn(rs.getDate(5));
                         reservation.setCheckOut(rs.getDate(6));
+						reservation.setNumberOfNights(rs.getInt(7));
 					}
 				} finally { s.close(); }
 			} catch (SQLException e) {
