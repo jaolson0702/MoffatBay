@@ -6,10 +6,15 @@
     pageEncoding="ISO-8859-1"%> 
     <%@page import="lodge.beans.Reservation"%>
     <%@page import="lodge.beans.Room"%>
+    <%@page import="java.sql.Date"%>
+    <%@page import="java.math.BigDecimal"%>
+    <%@page import="java.util.concurrent.TimeUnit"%>
 <%
     Reservation res = (Reservation)request.getAttribute("reservation");
     Room room = (Room)request.getAttribute("room");
-    String total = (String)request.getAttribute("total");
+    long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
+    String total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS))).toString();
+    // String total = (String)request.getAttribute("total");
 %>
 
     <!DOCTYPE html>
@@ -72,14 +77,22 @@
                 <label type="guestcount">Guest Count</label>
                 <label type="guestcount"><%=res.getGuestCount()%></label>
                 <br/>
+                <label type="roomnumber">Room Number</label>
+                <label type="roomnumber"><%=room.getId()%></label>
+                <br/>
                 <label type="roomtype">Room Size</label>
                 <label type="roomtype"><%=room.getRoomSize()%></label>
                 <br/><br/>
                 <label type="total">Total</label>
                 <label type="total"><%=total%></label>
 
-                <button type="submit" name="cancel" class="button">Go Back</button>
-                <button type="submit" name="submit" class="button">Submit</button>
+                <input type="hidden" name="checkin" id="checkin" value="<%= res.getCheckIn() %>">>
+                <input type="hidden" name="checkout" id="checkout" value="<%= res.getCheckOut() %>">>
+                <input type="hidden" name="guestcount" id="guestcount" value="<%= res.getGuestCount() %>">>
+                <input type="hidden" name="roomid" id="roomid" value="<%= room.getId() %>">>
+
+                <button type="submit" name="cancel" class="button" formaction="summary?action=cancel">Go Back</button>
+                <button type="submit" name="submit" class="button" formaction="summary?action=submit">Submit</button>
                 </form>
             </div>
 

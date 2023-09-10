@@ -58,11 +58,23 @@ public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet 
 
         if (action.equalsIgnoreCase("submit")) {
             System.out.println("clicked submit");
-            Reservation reservation = (Reservation)request.getAttribute("reservation");
-            Room room = (Room)request.getAttribute("room");
+            // Reservation reservation = (Reservation)request.getAttribute("reservation");
+            Reservation reservation = new Reservation();
+            reservation.setCheckIn(request.getParameter("checkin"));
+            reservation.setCheckOut(request.getParameter("checkout"));
+            reservation.setRoomsId(Integer.parseInt(request.getParameter("roomid")));
+            reservation.setCustomersId((int)session.getAttribute("userid"));
+            reservation.setGuestCount(request.getParameter("guestcount"));
+
+            // Room room = (Room)request.getAttribute("room");
+            System.out.println("Room being searched for: " + reservation.getRoomsId());
+            Room room = dm.getRoom(reservation.getRoomsId());
+            System.out.println("Room sought for exists? " + (room != null));
+            /*
             BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(reservation.getNumberOfNights()));
             request.setAttribute("total", total);
             System.out.println(total);
+            */
 
             dm.insertReservation(reservation);
             RequestDispatcher req = request.getRequestDispatcher("?action=home");

@@ -62,7 +62,7 @@ public class RoomPeer {
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "select id, first_name, last_name, email, phone, password from rooms"
+				String sql = "select id, room_size, available, price from rooms"
 					+ " where id=" + roomId;
 				try {
 					ResultSet rs = s.executeQuery(sql);
@@ -75,7 +75,7 @@ public class RoomPeer {
 					}
 				} finally { s.close(); }
 			} catch (SQLException e) {
-				System.out.println("Could not get customer: " + e.getMessage());
+				System.out.println("Could not get room: " + e.getMessage());
 			} finally {
 				dataManager.putConnection(connection);
 			}

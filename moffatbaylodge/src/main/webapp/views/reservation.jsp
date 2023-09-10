@@ -3,7 +3,7 @@
     Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
 -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%> 
+pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +54,12 @@ pageEncoding="ISO-8859-1"%>
         <%@ include file = "header.jsp" %>
 
         <div class="resform">
+            <%
+                String roomErrorMessage = (String)request.getAttribute("roomerror");
+                if (roomErrorMessage != null) {
+                    out.println("<font color=red size=4px>" + roomErrorMessage + "</font>");
+                }
+            %>
             <h1>Reservation</h1>
     
             <form method="POST" action="book">

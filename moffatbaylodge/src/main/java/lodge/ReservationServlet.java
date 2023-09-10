@@ -69,7 +69,7 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
                 room = availableRooms.get(0);
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Did not find any available rooms: " + e.getMessage());
-                request.setAttribute("roomerror","No "+ roomType + "rooms are available");
+                request.setAttribute("roomerror","No "+ roomType + " rooms are available.");
                 RequestDispatcher req = request.getRequestDispatcher("?action=reservation");
                 req.include(request, response);
             }
@@ -85,7 +85,7 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
 
             request.setAttribute("reservation", reservation);
             request.setAttribute("room", room);
-            System.out.println("Set request" + reservation.getId());
+            System.out.println("Set request " + reservation.getId());
 
             // Display confirmation
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationsummary");
