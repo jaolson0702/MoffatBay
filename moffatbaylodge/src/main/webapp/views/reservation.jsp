@@ -30,7 +30,7 @@
                 <h1>Reservation</h1>
                 <br /><br />
 
-                <form method="POST" action="reservation">
+                <form method="POST" action="book">
            
                 <input type="date" name="checkin" placeholder="Check-In Date" required /> 
                 <input type="date" name="checkout" placeholder="Check-Out Date" required />
