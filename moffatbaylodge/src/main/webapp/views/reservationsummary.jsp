@@ -9,6 +9,7 @@
 <%
     Reservation res = request.getAttribute("reservation");
     Room room = request.getAttribute("room");
+    String total = request.getAttribute("total");
 %>
 
     <!DOCTYPE html>
@@ -75,7 +76,7 @@
                 <label type="roomtype"><%=room.getRoomSize()%></label>
                 <br/><br/>
                 <label type="total">Total</label>
-                <label type="total">Total</label>
+                <label type="total"><%=total%></label>
 
                 <button type="submit" class="button">Go Back</button>
                 <button type="submit" class="button">Submit</button>
