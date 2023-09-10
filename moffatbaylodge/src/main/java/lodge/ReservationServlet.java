@@ -2,7 +2,7 @@
  * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
  * Authors: Bryce Kellas, Jared Olson
  * 
- * Servlet controller to handle registration requests and validations.
+ * Servlet controller to handle reservation requests and validations.
  * Adapted from: Beginning Jakarta EE Web Development, Third Edition - 2020 - Authors: Luciano Manelli, Giulio Zambon
  *      Accessed 9/2/2023
  * 
@@ -11,17 +11,16 @@
 package lodge;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.spec.InvalidKeySpecException;
 
 import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lodge.beans.Customer;
 import lodge.models.DataManager;
 
@@ -48,11 +47,26 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
 
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        
         // Set dataManager and pasword hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
-        
-        
+
+        // Display rooms
+
+        // Display confirmation
+
+        // Display summary
+
+
+        if (session.getAttribute("username") != null) {
+            
+        } else {
+
+            // Redirect to login
+            RequestDispatcher req = request.getRequestDispatcher("?action=login");
+            req.forward(request, response);
+        }
     }
 
 }
