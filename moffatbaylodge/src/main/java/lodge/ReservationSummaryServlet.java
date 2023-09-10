@@ -32,11 +32,11 @@ import lodge.beans.Room;
 import lodge.beans.Reservation;
 
 
-@WebServlet(name = "ReservationServlet", urlPatterns = {"/book/*"})
-public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
+@WebServlet(name = "ReservationSummaryServlet", urlPatterns = {"/book/summary/*"})
+public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet {
     
     
-    public ReservationServlet() {
+    public ReservationSummaryServlet() {
         super();
     }
 
@@ -59,37 +59,19 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
         // Set dataManager and pasword hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
-        if (request.getAttribute("reservation") == null && session.getAttribute("username") != null) {
-            
-            // Display rooms
-            List<Room> availableRooms = dm.getAvailableRooms((Date)request.getAttribute("checkin"), (Date)request.getAttribute("checkout"), (String)request.getAttribute("roomsize"));
+        String action = request.getParameter("action");
 
-            Reservation reservation = new Reservation();
-            reservation.setCheckIn(request.getParameter("checkin"));
-            reservation.setCheckOut(request.getParameter("checkout"));
-            reservation.setRoomsId(availableRooms.get(0).getId());
-            reservation.setCustomersId((int)session.getAttribute("userid"));
-            reservation.setGuestCount(request.getParameter("guestcount"));
-
-            Room room = dm.getRoom(reservation.getRoomsId());
-
-            request.setAttribute("reservation", reservation);
-            request.setAttribute("room", room);
-
-            // Display confirmation
-            RequestDispatcher req = request.getRequestDispatcher("?action=reservationsummary");
-            req.forward(request, response);
-        }
-        else if(request.getAttribute("reservation") != null) {
+        if (action.equals("submit")) {
             Reservation reservation = (Reservation)request.getAttribute("reservation");
+
             dm.insertReservation(reservation);
             RequestDispatcher req = request.getRequestDispatcher("?action=home");
             req.forward(request, response);
         }
-         else {
-
-            // Redirect to login
-            RequestDispatcher req = request.getRequestDispatcher("?action=login");
+        else {
+            request.removeAttribute("reservation");
+            request.removeAttribute("room");
+            RequestDispatcher req = request.getRequestDispatcher("?action=book");
             req.forward(request, response);
         }
     }

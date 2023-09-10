@@ -78,7 +78,7 @@ public class ReservationPeer {
 		return reservation;
 	}
 
-	public static void insertReservation(Statement stmt, Reservation reservation, Room room) throws SQLException {
+	public static void insertReservation(Statement stmt, Reservation reservation) throws SQLException {
 		String sql = "insert into bookings (guest_count, check_in, check_out, rooms_id, customers_id) " 
 			+ "values ('"
             + reservation.getGuestCount() + "','"
