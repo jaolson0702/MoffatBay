@@ -59,10 +59,17 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
         if (request.getAttribute("reservation") == null && session.getAttribute("username") != null) {
             Date checkIn = Date.valueOf(request.getParameter("checkin"));
             Date checkOut = Date.valueOf(request.getParameter("checkout"));
-            System.out.println(checkIn);
-            System.out.println(checkIn);
             String roomType = request.getParameter("roomsize");
-            ArrayList<Room> availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+            ArrayList<Room> availableRooms = new ArrayList<Room>();
+
+            try {
+                availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Did not find any available rooms: " + e.getMessage());
+                request.setAttribute("roomerror","No "+ roomType + "rooms are available");
+                RequestDispatcher req = request.getRequestDispatcher("?action=reservation");
+                req.include(request, response);
+            }
             Room room = availableRooms.get(0);
             
             // Set Reservation values from user input
