@@ -34,10 +34,14 @@ public class Reservation implements Serializable {
     public void setRoomsId(int roomsId) {this.roomsId = roomsId;}
     public int getCustomersId() {return customersId;}
     public void setCustomersId(int customersId) {this.customersId = customersId;}
+    public void setCustomersId(String customersId) {this.customersId = Integer.parseInt(customersId);}
     public int getGuestCount() {return guestCount;}
     public void setGuestCount(int guestCount) {this.guestCount = guestCount;}
+    public void setGuestCount(String guestCount) {this.guestCount = Integer.parseInt(guestCount);}
     public Date getCheckIn() {return checkIn;}
     public void setCheckIn(Date checkIn) {this.checkIn = checkIn;}
+    public void setCheckIn(String checkIn) {this.checkIn = Date.valueOf(checkIn);}
     public Date getCheckOut() {return checkOut;}
+    public void setCheckOut(String checkOut) {this.checkOut = Date.valueOf(checkOut);}
     public void setCheckOut(Date checkOut) {this.checkOut = checkOut;}
 }

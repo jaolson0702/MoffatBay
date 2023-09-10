@@ -13,8 +13,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
+import java.util.List;
 
 import lodge.beans.Customer;
+import lodge.beans.Reservation;
+import lodge.beans.Room;
+
 //import lodge.beans.Booking;
 //import lodge.beans.Room;
 
@@ -116,5 +121,25 @@ public class DataManager {
                 putConnection(connection);
             }
         }
+    }
+
+    public void insertReservation(Reservation reservation, Room room) {
+        try {
+            Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ReservationPeer.insertReservation(stmt, reservation, room);
+        }
+        catch (SQLException e) {
+            System.out.println("Could not insert reservation: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public Room getRoom(int roomId) {
+        return RoomPeer.getRoomById(this, roomId);
+    }
+
+    public List<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
+        return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
     }
 }

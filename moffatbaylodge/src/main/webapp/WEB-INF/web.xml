@@ -53,6 +53,10 @@
 		<servlet-name>ReservationServlet</servlet-name>
 		<servlet-class>lodge.ReservationServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ReservationSummaryServlet</servlet-name>
+		<servlet-class>lodge.ReservationSummaryServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LodgeServlet</servlet-name>
@@ -69,6 +73,10 @@
 	<servlet-mapping>
 		<servlet-name>ReservationServlet</servlet-name>
 		<url-pattern>/book</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReservationSummaryServlet</servlet-name>
+		<url-pattern>/book/summary</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

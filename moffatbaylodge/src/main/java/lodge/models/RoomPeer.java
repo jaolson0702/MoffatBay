@@ -13,12 +13,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import lodge.beans.Room;
 
 
 public class RoomPeer {
-  	public static ArrayList<Room> getAvailableRooms(DataManager dataManager, Date checkin, Date checkout) {
+  	public static List<Room> getAvailableRooms(DataManager dataManager, Date checkin, Date checkout, String roomSize) {
 		ArrayList<Room> rooms = new ArrayList<Room>();
         Room r = new Room();
 		Connection connection = dataManager.getConnection();
@@ -29,7 +30,7 @@ public class RoomPeer {
                 // Find rooms that are not in the bookings table for the user supplied date range
 				String sql = "SELECT id, room_size, price " + //
                             "FROM Rooms AS r " + //
-                            "WHERE r.id NOT IN  " + // 
+                            "WHERE room_size='"+roomSize+"' AND r.id NOT IN  " + // 
                             "      (SELECT rooms_id " + //
                             "      FROM bookings as b " + //
                             "      WHERE (b.check_in >= '" + checkin.toString() + "' AND b.check_in < '" + checkout.toString() + "') " + //
