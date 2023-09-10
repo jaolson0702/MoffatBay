@@ -123,11 +123,11 @@ public class DataManager {
         }
     }
 
-    public void insertReservation(Reservation reservation, Room room) {
+    public void insertReservation(Reservation reservation) {
         try {
             Connection connection = getConnection();
             Statement stmt = connection.createStatement();
-            ReservationPeer.insertReservation(stmt, reservation, room);
+            ReservationPeer.insertReservation(stmt, reservation);
         }
         catch (SQLException e) {
             System.out.println("Could not insert reservation: " + e.getMessage());

@@ -57,7 +57,7 @@ public class RoomPeer {
 		return rooms;
 	}
   
-  	public static Room getRoomById(DataManager dataManager, String roomId) {
+  	public static Room getRoomById(DataManager dataManager, int roomId) {
 		Room room = null;
 		Connection connection = dataManager.getConnection();
 		
