@@ -4,12 +4,12 @@
 -->
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
-    <%@page import="lodge.beans.Customer"%>
-    <%@page import="lodge.models.DataManager"%>
+    <%@page import="lodge.beans.Reservation"%>
+    <%@page import="lodge.beans.Room"%>
 <%
-    Reservation res = request.getAttribute("reservation");
-    Room room = request.getAttribute("room");
-    String total = request.getAttribute("total");
+    Reservation res = (Reservation)request.getAttribute("reservation");
+    Room room = (Room)request.getAttribute("room");
+    String total = (String)request.getAttribute("total");
 %>
 
     <!DOCTYPE html>
@@ -61,7 +61,7 @@
                 <h1>Reservation Summary</h1>
                 <br /><br />
 
-                <form method="POST" action="book/summary">
+                <form method="POST" action="summary">
            
                 <label type="date">Check-In Date</label> 
                 <label type="date"><%=res.getCheckIn()%></label>
@@ -78,8 +78,8 @@
                 <label type="total">Total</label>
                 <label type="total"><%=total%></label>
 
-                <button type="submit" class="button">Go Back</button>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" name="cancel" class="button">Go Back</button>
+                <button type="submit" name="submit" class="button">Submit</button>
                 </form>
             </div>
 
