@@ -33,11 +33,11 @@ CREATE TABLE Bookings (
 );
 
 INSERT INTO rooms (id, room_size, available, price)
-VALUES  (101, 'double full beds', TRUE, '115.50'),
-        (102, 'queen bed', TRUE, '120.75'),
-        (103, 'double queen beds', TRUE, '131.25'),
-        (104, 'king bed', TRUE, '157.50'),
-        (105, 'double full beds', TRUE, '115.50');
+VALUES  (101, 'double full', TRUE, '115.50'),
+        (102, 'queen', TRUE, '120.75'),
+        (103, 'double queen', TRUE, '131.25'),
+        (104, 'king', TRUE, '157.50'),
+        (105, 'double full', TRUE, '115.50');
 
 insert into Customers (first_name, last_name, email, phone, password)
 VALUES  ('Anh', 'Vo', 'bellevueuni1@gmail.com', '402-717-8900','1000:5fa303aa461acad341889095aa92ea3b:44e89a49624ebdc3a438b493e84a0945031ffbe20e542476158d0ee19b4fcf48e053057ade72f0ae729064e5d9ef8fc59f73aa9f4209285d9ebbc5eca38916de'),
