@@ -55,6 +55,9 @@
                 margin-right: 20%;
                 display: inline-block;
             }
+            .main .contact {
+                text-align: center;
+            }
         </style>
     </head>
     <body>      
@@ -81,6 +84,23 @@
                         <h4>Cheryl Deiro</h4>
                         <p>Director of Sales</p>
                     </div>
+                </div>
+                    <p></p>
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                        <p>
+                            Moffat Bay Lodge<br>
+                            323 Moffat Bay Dr.<br>
+                            Joviedsa Island, WA 98001
+                            <br><br>
+                            (206) 555-4768<br>
+                            hello@moffatbaylodge.com
+                            <br><br>
+                        </p>
+                    <h3>Follow Us</h3>
+                        <a href="https://www.facebook.com/"><img src="<%=request.getContextPath()%>/images/fb.png" alt="Facebook" /></a>
+                        <a href="https://www.instagram.com/"><img src="<%=request.getContextPath()%>/images/ig.png" alt="Instagram" /></a>
+                        <a href="https://www.youtube.com/"><img src="<%=request.getContextPath()%>/images/yt.png" alt="YouTube" /></a>
                 </div>
             </div>
             
