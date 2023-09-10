@@ -13,28 +13,20 @@ package lodge;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lodge.beans.Customer;
 import lodge.models.DataManager;
-
-import java.util.List;
-
-import java.sql.Date;
-import java.time.Period;
 
 import lodge.beans.Room;
 import lodge.beans.Reservation;
 
 
-@WebServlet(name = "ReservationSummaryServlet", urlPatterns = {"/book/summary/*"})
+@WebServlet(name = "ReservationSummaryServlet", urlPatterns = {"/summary/*"})
 public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet {
     
     
@@ -61,23 +53,28 @@ public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet 
         // Set dataManager and pasword hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
-        String action = request.getParameter("name");
+        String action = request.getParameter("action");
+        System.out.println(action);
 
-        if (action.equals("submit")) {
+        if (action.equalsIgnoreCase("submit")) {
+            System.out.println("clicked submit");
             Reservation reservation = (Reservation)request.getAttribute("reservation");
             Room room = (Room)request.getAttribute("room");
             BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(reservation.getNumberOfNights()));
-            request.setAttribute("total", total.toString());
+            request.setAttribute("total", total);
+            System.out.println(total);
 
             dm.insertReservation(reservation);
             RequestDispatcher req = request.getRequestDispatcher("?action=home");
             req.forward(request, response);
         }
         else {
+            System.out.println("clicked go back");
             request.removeAttribute("reservation");
             request.removeAttribute("room");
-            RequestDispatcher req = request.getRequestDispatcher("?action=book");
-            req.forward(request, response);
+            request.removeAttribute("total");
+            RequestDispatcher req = request.getRequestDispatcher("?action=reservation");
+            req.include(request, response);
         }
     }
 
