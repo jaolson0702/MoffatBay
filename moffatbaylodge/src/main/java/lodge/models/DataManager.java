@@ -124,4 +124,8 @@ public class DataManager {
             }
         }
     }
+
+    public Reservation getReservationByCustomerId(int cusId) {
+        return ReservationPeer.getReservationByCustomerId(this, cusId);
+    }
 }

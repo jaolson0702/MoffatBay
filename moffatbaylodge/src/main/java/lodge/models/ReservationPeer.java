@@ -16,14 +16,14 @@ import lodge.beans.Reservation;
 
 
 public class ReservationPeer {
-  	public static Reservation getReservationByCustomerId(DataManager dataManager, String keyword, int cusId) {
+  	public static Reservation getReservationByCustomerId(DataManager dataManager, int cusId) {
 		Reservation reservation = null;
 		Connection connection = dataManager.getConnection();
 
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "SELECT id, rooms_id, customers_id, guest_count, check_in, check_out from reservations " +
+				String sql = "SELECT id, rooms_id, customers_id, guest_count, check_in, check_out from bookings " +
                              "WHERE customers_id=" + cusId;
 				try {
 					ResultSet rs = s.executeQuery(sql);
@@ -55,7 +55,7 @@ public class ReservationPeer {
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from reservations"
+				String sql = "id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from bookings"
 					    + " where id=" + reservationID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
