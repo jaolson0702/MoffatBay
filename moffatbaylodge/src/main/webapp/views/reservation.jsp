@@ -65,11 +65,11 @@ pageEncoding="ISO-8859-1"%>
             <form method="POST" action="book">
         
             <label for="checkin"> Check-In </label>
-            <input type="date" name="checkin">   
+            <input type="date" name="checkin" required>   
             <label for="checkout"> Check-Out </label>
-            <input type="date" name="checkout">   
+            <input type="date" name="checkout" required>   
             <label for="guestcount"> Guest Count </label>
-            <select name="guestcount" id="guestcount">
+            <select name="guestcount" id="guestcount" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -77,7 +77,7 @@ pageEncoding="ISO-8859-1"%>
                 <option value="5">5</option>
             </select>
             <label for="roomsize"> Room Size </label>
-            <select name="roomsize" id="roomsize">
+            <select name="roomsize" id="roomsize" required>
                 <option value="double full">Double Full</option>
                 <option value="queen">Queen</option>
                 <option value="double queen">Double Queen </option>
