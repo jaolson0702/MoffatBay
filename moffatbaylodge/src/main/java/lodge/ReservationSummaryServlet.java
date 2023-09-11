@@ -65,8 +65,15 @@ public class ReservationSummaryServlet extends jakarta.servlet.http.HttpServlet 
             reservation.setRoomsId(Integer.parseInt(request.getParameter("roomid")));
             reservation.setCustomersId((int)session.getAttribute("userid"));
             reservation.setGuestCount(request.getParameter("guestcount"));
+            //reservation.setNumberOfNights(0);
 
             Room room = dm.getRoom(reservation.getRoomsId());
+
+            System.out.println("Room sought for exists? " + (room != null));
+            
+            BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(reservation.getNumberOfNights()));
+            request.setAttribute("total", total);
+            System.out.println(total);
 
             dm.insertReservation(reservation);
             reservation = dm.getReservationByCustomerId((int)session.getAttribute("userid"));
