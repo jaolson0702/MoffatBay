@@ -22,9 +22,8 @@ import jakarta.servlet.http.HttpSession;
 import lodge.models.DataManager;
 
 import java.util.ArrayList;
-
+import java.util.concurrent.TimeUnit;
 import java.sql.Date;
-
 import lodge.beans.Room;
 import lodge.beans.Reservation;
 
@@ -82,10 +81,11 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
             reservation.setRoomsId(room.getId());
             reservation.setCustomersId((int)session.getAttribute("userid"));
             reservation.setGuestCount(request.getParameter("guestcount"));
+            reservation.setNumberOfNights((int)TimeUnit.DAYS.convert(reservation.getCheckOut().getTime() - reservation.getCheckIn().getTime(), TimeUnit.MILLISECONDS));
 
             request.setAttribute("reservation", reservation);
             request.setAttribute("room", room);
-            System.out.println("Set request " + reservation.getId());
+            System.out.println("Set request From ReservationServlet" + reservation.getId());
 
             // Display confirmation
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationsummary");
