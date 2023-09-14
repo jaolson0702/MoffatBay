@@ -83,7 +83,7 @@ public class LodgeServlet extends jakarta.servlet.http.HttpServlet {
                     break;
                 case "reservationlookup":
                     //url = base + "reservationlookup.jsp";
-                    url = base + "Test.jsp";
+                    url = base + "reservationlookup.jsp";
                     break;
                 case "reservationsummary":
                     url = base + "reservationsummary.jsp";

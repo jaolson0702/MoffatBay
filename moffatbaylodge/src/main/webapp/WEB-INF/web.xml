@@ -59,7 +59,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>ReservationLookupServlet</servlet-name>
-		<servlet-class>lodge.ReservationlookupServlet</servlet-class>
+		<servlet-class>lodge.ReservationLookupServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

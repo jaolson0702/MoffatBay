@@ -54,10 +54,11 @@ public class ReservationPeer {
 		
 		if (connection != null) {
 			try {
+				System.out.println("Reservation ID: " + reservationID);
 				Statement s = connection.createStatement();
-				String sql = "SELECT bookings.id, bookings.rooms_id, customers.email, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
-							+"FROM bookings"
-							+"INNER JOIN customers ON bookings.customers_id = customers.id"
+				String sql = "SELECT bookings.id, bookings.rooms_id, customers.id, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
+							+"FROM bookings "
+							+"INNER JOIN customers ON bookings.customers_id = customers.id\n"
 				  			+"WHERE bookings.id=" + reservationID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
@@ -83,16 +84,16 @@ public class ReservationPeer {
 
 	public static ArrayList<Reservation> getReservationsByCustomerEmail(DataManager dataManager, String email) {
 		Reservation r = null;
-		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+		ArrayList<Reservation> reservations = new ArrayList<>();
 		Connection connection = dataManager.getConnection();
 		
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "SELECT bookings.id, bookings.rooms_id, customers.email, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
-							+"FROM bookings"
-							+"INNER JOIN customers ON bookings.customers_id = customers.id"
-				  			+"WHERE customers.email=\'" + email + "\'";
+				String sql = "SELECT bookings.id, bookings.rooms_id, customers.id, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
+							+"FROM bookings "
+							+"INNER JOIN customers ON bookings.customers_id = customers.id\n"
+				  			+"WHERE customers.email = \'" + email + "\'";
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					while (rs.next()) {
@@ -109,6 +110,7 @@ public class ReservationPeer {
 				} finally { s.close(); }
 			} catch (SQLException e) {
 				System.out.println("Could not get reservation: " + e.getMessage());
+				System.out.println(e.getClass());
 			} finally {
 				dataManager.putConnection(connection);
 			}

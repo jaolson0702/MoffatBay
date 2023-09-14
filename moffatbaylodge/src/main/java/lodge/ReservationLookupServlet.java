@@ -57,8 +57,9 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
 
         String keyword = request.getParameter("search");
 
-        if (request.getAttribute("searchby") == "email") {
-            ArrayList<Reservation> reservations = dm.getReservations(keyword);
+        ArrayList<Reservation> reservations = dm.getReservations(keyword);
+
+        if (request.getParameter("searchby").equals("email")) {
             
             // Redirect to form again if no reservation found
             try {
@@ -69,13 +70,19 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
                 req.include(request, response);
             }
 
+            ArrayList<Room> rooms = new ArrayList<>();
+            for (Reservation res : reservations) {
+                rooms.add(dm.getRoom(res.getRoomsId()));
+            }
+
             // Forward to lookup to display results
             request.setAttribute("reservations", reservations);
+            request.setAttribute("rooms", rooms);
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
             req.forward(request, response);
             
         }  
-        if (request.getParameter("searchby") == "resid") {
+        if (request.getParameter("searchby").equals("resid")) {
             Reservation reservation = dm.getReservation(Integer.parseInt(keyword));
             
             // Redirect to form again if no reservation found
@@ -85,8 +92,16 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
                 req.include(request, response);
             }
 
+            reservations.add(reservation);
+
+            ArrayList<Room> rooms = new ArrayList<>();
+            for (Reservation res : reservations) {
+                rooms.add(dm.getRoom(res.getRoomsId()));
+            }
+
             // Forward to lookup to display results
-            request.setAttribute("reservation", reservation);
+            request.setAttribute("reservations", reservations);
+            request.setAttribute("rooms", rooms);
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
             req.forward(request, response);
         } else {
