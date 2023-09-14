@@ -47,7 +47,7 @@
                 <br /><br />
                 <input type="text" name="lastname" placeholder="Last Name" required />
                 <br /><br />
-                <input type="text" name="phone" placeholder="Phone Number" required />
+                <input type="tel" name="phone" placeholder="Phone Number: 123-456-7890" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
                 <br /><br />
                 <input type="text" placeholder="Email" name="email" required />
                 <br /><br />
@@ -57,7 +57,7 @@
                 </form>
             </div>
 
-            <%@ include file = "footer.jsp" %>
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
     </html>

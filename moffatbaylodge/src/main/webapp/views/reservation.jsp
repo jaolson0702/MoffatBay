@@ -49,9 +49,9 @@ pageEncoding="ISO-8859-1"%>
     </style>
 </head>
 <body>
+    <%@ include file = "header.jsp" %>
 
     <div class="container">
-        <%@ include file = "header.jsp" %>
 
         <div class="resform">
             <%
@@ -87,7 +87,8 @@ pageEncoding="ISO-8859-1"%>
             </form>
         </div>
 
-        <%@ include file = "footer.jsp" %>
+        
     </div>
+    <%@ include file = "footer.jsp" %>
 </body>
 </html>

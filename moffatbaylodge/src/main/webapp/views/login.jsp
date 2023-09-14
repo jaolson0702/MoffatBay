@@ -19,9 +19,10 @@
 
         <title>Log In | Moffat Bay Lodge</title>
     </head>
-    <body>      
+    <body>    
+        <%@ include file = "header.jsp" %>  
         <div class="container">
-            <%@ include file = "header.jsp" %>
+            
 
             <div class="forms">
 
@@ -46,7 +47,8 @@
                 </form>
             </div>
             
-            <%@ include file = "footer.jsp" %>
+            
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
 </html>

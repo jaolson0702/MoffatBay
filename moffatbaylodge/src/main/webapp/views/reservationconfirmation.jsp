@@ -62,9 +62,8 @@
         </script>
     </head>
     <body>
-
+        <%@ include file = "header.jsp" %>
         <div class="container">
-            <%@ include file = "header.jsp" %>
 
             <div class="summaryForm">
                 <h1>Reservation Confirmation</h1>
@@ -92,7 +91,8 @@
                 <p id="emailSuccess"></p>
             </div>
 
-            <%@ include file = "footer.jsp" %>
+            
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
     </html>

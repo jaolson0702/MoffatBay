@@ -58,9 +58,9 @@
 
     </head>
     <body>
-
+        <%@ include file = "header.jsp" %>
         <div class="container">
-            <%@ include file = "header.jsp" %>
+            
 
             <div class="summaryForm">
                 <h1>Reservation Summary</h1>
@@ -102,7 +102,8 @@
                 </form>
             </div>
 
-            <%@ include file = "footer.jsp" %>
+            
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
     </html>
