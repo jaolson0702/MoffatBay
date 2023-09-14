@@ -16,8 +16,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lodge.models.DataManager;
 
@@ -58,9 +58,37 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
         String keyword = request.getParameter("search");
 
         if (request.getAttribute("searchby") == "email") {
-            dm.
-        } else if (request.getParameter("searchby") == "resid") {
+            ArrayList<Reservation> reservations = dm.getReservations(keyword);
+            
+            // Redirect to form again if no reservation found
+            try {
+                reservations.get(0);
+            } catch (IndexOutOfBoundsException e) {
+                request.setAttribute("reserror","No reservations found.");
+                RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
+                req.include(request, response);
+            }
 
+            // Forward to lookup to display results
+            request.setAttribute("reservations", reservations);
+            RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
+            req.forward(request, response);
+            
+        }  
+        if (request.getParameter("searchby") == "resid") {
+            Reservation reservation = dm.getReservation(Integer.parseInt(keyword));
+            
+            // Redirect to form again if no reservation found
+            if (reservation == null) {
+                request.setAttribute("reserror","No reservations found.");
+                RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
+                req.include(request, response);
+            }
+
+            // Forward to lookup to display results
+            request.setAttribute("reservation", reservation);
+            RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
+            req.forward(request, response);
         } else {
 
         }
