@@ -58,7 +58,7 @@
 		<servlet-class>lodge.ReservationSummaryServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ReservationlookupServlet</servlet-name>
+		<servlet-name>ReservationLookupServlet</servlet-name>
 		<servlet-class>lodge.ReservationlookupServlet</servlet-class>
 	</servlet>
 
