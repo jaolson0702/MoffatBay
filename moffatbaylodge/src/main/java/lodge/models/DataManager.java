@@ -76,8 +76,12 @@ public class DataManager {
         }
     }
 
+    public Reservation getReservation(int id) {
+        return ReservationPeer.getReservationById(this, id);
+    }
+
     public ArrayList<Reservation> getReservations(String email) {
-        return ReservationPeer.getReservationByCustomerEmail(this, email);
+        return ReservationPeer.getReservationsByCustomerEmail(this, email);
     }
 
     public Room getRoom(int roomId) {

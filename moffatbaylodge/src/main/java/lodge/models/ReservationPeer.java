@@ -50,15 +50,17 @@ public class ReservationPeer {
 		return reservation;
 	}
   
-  	public static Reservation getReservationById(DataManager dataManager, String reservationID) {
+  	public static Reservation getReservationById(DataManager dataManager, int reservationID) {
 		Reservation reservation = null;
 		Connection connection = dataManager.getConnection();
 		
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "select id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from bookings"
-					    + " where id=" + reservationID;
+				String sql = "SELECT bookings.id, bookings.rooms_id, customers.email, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
+							+"FROM bookings"
+							+"INNER JOIN customers ON bookings.customers_id = customers.id"
+				  			+"WHERE bookings.id=" + reservationID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
 					if (rs.next()) {
@@ -81,7 +83,7 @@ public class ReservationPeer {
 		return reservation;
 	}
 
-	public static ArrayList<Reservation> getReservationByCustomerEmail(DataManager dataManager, String email) {
+	public static ArrayList<Reservation> getReservationsByCustomerEmail(DataManager dataManager, String email) {
 		Reservation r = null;
 		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 		Connection connection = dataManager.getConnection();
