@@ -23,9 +23,9 @@
         <title>Registration | Moffat Bay Lodge</title>
     </head>
     <body>
-
+    
+        <%@ include file = "header.jsp" %>
         <div class="container">
-            <%@ include file = "header.jsp" %>
 
             <div class="forms">
                 <h1>Registration</h1>
@@ -47,7 +47,7 @@
                 <br /><br />
                 <input type="text" name="lastname" placeholder="Last Name" required />
                 <br /><br />
-                <input type="tel" name="phone" placeholder="Phone Number: 123-456-7890" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                <input type="tel" name="phone" placeholder="Phone: 123-456-7890" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
                 <br /><br />
                 <input type="text" placeholder="Email" name="email" required />
                 <br /><br />
