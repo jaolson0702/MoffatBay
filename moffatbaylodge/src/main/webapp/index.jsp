@@ -12,22 +12,19 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Gloock&display=swap"
-    rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
 
     <title>DELTA | CSD460</title>
 </head>
 <body>
+    <%@ include file = "views/header.jsp" %>
     <div class="container">
-        <%@ include file = "views/header.jsp" %>
 
         <div class="gallery">
             <img src="<%=request.getContextPath()%>/images/photo1.jpg" alt="photo1" />
         </div>
 
-        <%@ include file = "views/footer.jsp" %>
     </div>
+    <%@ include file = "views/footer.jsp" %>
 </body>
 </html>
