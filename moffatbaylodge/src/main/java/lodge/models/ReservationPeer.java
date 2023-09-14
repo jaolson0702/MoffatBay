@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 import lodge.beans.Room;
 import lodge.beans.Reservation;
 
@@ -55,7 +57,7 @@ public class ReservationPeer {
 		if (connection != null) {
 			try {
 				Statement s = connection.createStatement();
-				String sql = "id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from bookings"
+				String sql = "select id, rooms_id, customers_id, guest_count, check_in, check_out DATEDIFF(check_in, check_out) AS nights from bookings"
 					    + " where id=" + reservationID;
 				try {
 					ResultSet rs = s.executeQuery(sql);
@@ -77,6 +79,41 @@ public class ReservationPeer {
 			}
 		}
 		return reservation;
+	}
+
+	public static ArrayList<Reservation> getReservationByCustomerEmail(DataManager dataManager, String email) {
+		Reservation r = null;
+		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+		Connection connection = dataManager.getConnection();
+		
+		if (connection != null) {
+			try {
+				Statement s = connection.createStatement();
+				String sql = "SELECT bookings.id, bookings.rooms_id, customers.email, bookings.guest_count, bookings.check_in, bookings.check_out, DATEDIFF(bookings.check_out, bookings.check_in) AS nights "
+							+"FROM bookings"
+							+"INNER JOIN customers ON bookings.customers_id = customers.id"
+				  			+"WHERE customers.email=\'" + email + "\'";
+				try {
+					ResultSet rs = s.executeQuery(sql);
+					while (rs.next()) {
+						r = new Reservation();
+                        r.setId(rs.getInt(1));
+                        r.setRoomsId(rs.getInt(2));
+                        r.setCustomersId(rs.getInt(3));
+                        r.setGuestCount(rs.getInt(4));
+                        r.setCheckIn(rs.getDate(5));
+                        r.setCheckOut(rs.getDate(6));
+						r.setNumberOfNights(rs.getInt(7));
+						reservations.add(r);
+					}
+				} finally { s.close(); }
+			} catch (SQLException e) {
+				System.out.println("Could not get reservation: " + e.getMessage());
+			} finally {
+				dataManager.putConnection(connection);
+			}
+		}
+		return reservations;
 	}
 
 	public static void insertReservation(Statement stmt, Reservation reservation) throws SQLException {
