@@ -2,19 +2,14 @@
     Team Delta
     Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
 -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
-
     <title>Reservation | Moffat Bay Lodge</title>
 
     <style type="text/css">
@@ -50,7 +45,6 @@
     <%@ include file = "header.jsp" %>
     <div class="container">
 
-
         <div class="resform">
             <h1>Reservation Lookup</h1>
     
@@ -70,8 +64,5 @@
         
     </div>
     <%@ include file = "footer.jsp" %>
-    <style>
-        
-    </style>
 </body>
 </html>
