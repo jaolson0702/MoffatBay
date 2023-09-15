@@ -4,7 +4,6 @@
 -->
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
-    <%@page import="java.util.ArrayList"%>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -31,15 +30,15 @@
 
                 <form method="POST" action="register">
                 
-                <input type="text" name="firstname" placeholder="First Name"  />
+                <input type="text" name="firstname" placeholder="First Name" required />
                 <br /><br />
-                <input type="text" name="lastname" placeholder="Last Name"  />
+                <input type="text" name="lastname" placeholder="Last Name" required />
                 <br /><br />
-                <input type="tel" name="phone" placeholder="Phone: 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  />
+                <input type="tel" name="phone" placeholder="Phone: 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                 <br /><br />
-                <input type="text" placeholder="Email" name="email"  />
+                <input type="text" placeholder="Email" name="email" required />
                 <br /><br />
-                <input type="password" placeholder="Password" name="psw"  />
+                <input type="password" placeholder="Password" name="psw" required />
                 <input type="hidden" name="form-name" value="register" />
                 <br /><br />
                 <button type="submit" class="registerbtn">Register</button>

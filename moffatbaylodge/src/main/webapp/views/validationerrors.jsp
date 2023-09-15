@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <html>
 <body>
 <% // Display error message if inputs are invalid
@@ -7,6 +8,7 @@ if(request.getAttribute("errors") != null) {
         out.println("<p class=\"error\">" + e + "</p>");
     }
     out.println("<br>");
+    request.removeAttribute("errors");
 }
 %>
 </body>

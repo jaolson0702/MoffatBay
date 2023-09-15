@@ -3,7 +3,8 @@
     Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
 -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.time.LocalDate" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +63,9 @@ pageEncoding="ISO-8859-1"%>
             <form method="POST" action="book">
         
             <label for="checkin"> Check-In </label>
-            <input type="date" name="checkin" required>   
+            <input type="date" name="checkin" min="<%=LocalDate.now() %>" required >   
             <label for="checkout"> Check-Out </label>
-            <input type="date" name="checkout" required>   
+            <input type="date" name="checkout" min="<%=LocalDate.now() %>" required >   
             <label for="guestcount"> Guest Count </label>
             <select name="guestcount" id="guestcount" required>
                 <option value="1">1</option>

@@ -5,6 +5,8 @@
  */
 package lodge.beans;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
@@ -15,6 +17,7 @@ public class Validator {
 
     private ArrayList<String> errorMessages;
 
+    // Registration Messages
     private static final String EMAIL_EMPTY = "Email is required";
     private static final String EMAIL_INVALID = "Email is invalid";
     private static final String FNAME_EMPTY = "First name is required";
@@ -27,9 +30,17 @@ public class Validator {
     private static final String PASSWORD_LENGTH = "Password must be at least 8 characters";
     private static final String PASSWORD_CASE = "Password must contain at least 1 upper case and at least 1 lower case letter";
     
-    private static final String RES_ID_EMPTY = "Reservation ID must be numeric";
+    // Reservation ID messages
+    private static final String RES_ID_EMPTY = "Reservation ID is required";
     private static final String RES_ID_INVALID = "Reservation ID must be numeric";
 
+    // Date messages
+    private static final String DATES_EMPTY = "Check-in and check-out dates are required";
+    private static final String DATES_INVALID = "Check-out date must be later than the check-in date";
+    private static final String CHECKIN_EMPTY = "Check-in date is required";
+    private static final String CHECKIN_INVALID = "Check-out date must be later than the check-in date";
+    private static final String CHECKOUT_EMPTY = "Check-out date is required";
+    
 
     // Contructors
     public Validator() {
@@ -137,4 +148,25 @@ public class Validator {
         
         return true;
     }
+
+    // Checkin validation
+    public boolean isDateValid(String checkin, String checkout) {
+        Date cin = null;
+        Date cout = null;
+        // Check if dates not entered
+        try {
+            cin = Date.valueOf(checkin);
+            cout = Date.valueOf(checkout);
+        } catch (IllegalArgumentException e) {
+            errorMessages.add(DATES_EMPTY);
+            return false;
+        }
+        if (!cin.before(cout)) {
+            errorMessages.add(DATES_INVALID);
+            return false;
+        }
+            return true;
+    }
+
+    
 }
