@@ -54,14 +54,11 @@ pageEncoding="ISO-8859-1"%>
     <div class="container">
 
         <div class="resform">
-            <%
-                String roomErrorMessage = (String)request.getAttribute("roomerror");
-                if (roomErrorMessage != null) {
-                    out.println("<font color=red size=4px>" + roomErrorMessage + "</font>");
-                }
-            %>
+            
             <h1>Reservation</h1>
     
+            <%@ include file = "validationerrors.jsp" %>
+
             <form method="POST" action="book">
         
             <label for="checkin"> Check-In </label>

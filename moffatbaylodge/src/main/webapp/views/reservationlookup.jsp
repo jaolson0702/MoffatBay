@@ -55,6 +55,8 @@
         <div class="resform">
             <h1>Reservation Lookup</h1>
     
+            <%@ include file = "validationerrors.jsp" %>
+
             <form method="POST" action="lookup">
         
             <input type="text" name="search" placeholder="Search...">
