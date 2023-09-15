@@ -83,6 +83,7 @@ pageEncoding="ISO-8859-1"%>
                 <option value="double queen">Double Queen </option>
                 <option value="king">King</option>                      
             </select>   
+            <input type="hidden" name="form-name" value="reserve" />
             <button type="submit" class="button">Review</button>
             </form>
         </div>

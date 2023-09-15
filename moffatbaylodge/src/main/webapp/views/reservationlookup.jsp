@@ -63,6 +63,7 @@
                 <option value="resid">Reservation ID</option>
                 <option value="email">Email</option>
             </select>
+            <input type="hidden" name="form-name" value="lookup" />
             
             <button type="submit" class="button">Search</button>
             </form>

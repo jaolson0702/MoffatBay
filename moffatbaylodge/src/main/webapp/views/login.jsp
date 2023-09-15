@@ -41,6 +41,7 @@
                 <input type="text" placeholder="Enter Username" name="username" required/>
                 <br /><br />
                 <input type="password" placeholder="Enter Password" name="password" required/>
+                <input type="hidden" name="form-name" value="login" />
                 <br /><br />
                 <button type="submit">Login</button>
                 <br /><br />
