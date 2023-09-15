@@ -40,6 +40,9 @@ public class Validator {
     private static final String CHECKIN_EMPTY = "Check-in date is required";
     private static final String CHECKIN_INVALID = "Check-out date must be later than the check-in date";
     private static final String CHECKOUT_EMPTY = "Check-out date is required";
+
+    // Search messages
+    private static final String SEARCHBY_EMPTY = "Search by selection is required";
     
 
     // Contructors
@@ -128,6 +131,16 @@ public class Validator {
             errorMessages.add(PASSWORD_CASE);
         }
         return false;
+    }
+
+    public boolean isSearchValid(String searchby) {
+        if (searchby.isEmpty() || searchby == null) {
+            errorMessages.add(SEARCHBY_EMPTY);
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     // Reservation ID validation

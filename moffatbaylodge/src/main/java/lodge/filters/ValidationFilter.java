@@ -80,13 +80,20 @@ public class ValidationFilter implements Filter  {
 
                 case "lookup": // Validate: reservation id or email
                     v = new Validator();
-                    b1 = v.isResIDValid(request.getParameter("resid"));
-                    b2 = v.IsEmailValid(request.getParameter("email"));
-                    if (!b1 || !b2 ) {
-                        ArrayList<String> errors = v.getErrorMessages();
-                        request.setAttribute("errors", errors);
-                        RequestDispatcher rd = request.getRequestDispatcher("?action=reservationlookup");
-                        rd.include(request, response);
+                    b1 = v.isSearchValid(request.getParameter("searchby"));
+
+                    if (b1) {    
+                        if (request.getParameter("searchby") == "resid") {
+                            b1 = v.isResIDValid(request.getParameter("resid"));
+                        } else if (request.getParameter("searchby") == "email") {
+                            b1 = v.IsEmailValid(request.getParameter("email"));
+                        }
+                        if (!b1) {
+                            ArrayList<String> errors = v.getErrorMessages();
+                            request.setAttribute("errors", errors);
+                            RequestDispatcher rd = request.getRequestDispatcher("?action=reservationlookup");
+                            rd.include(request, response);
+                        }
                     }
                     break; 
 
