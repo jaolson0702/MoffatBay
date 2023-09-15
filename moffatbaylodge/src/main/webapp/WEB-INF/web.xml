@@ -9,6 +9,16 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
   	
+	<filter>
+        <filter-name>ValidationFilter</filter-name>
+        <filter-class>lodge.filters.ValidationFilter</filter-class>
+	</filter>
+    
+	<filter-mapping>
+		<filter-name>ValidationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
   	<servlet>
 		<servlet-name>LodgeServlet</servlet-name>
 		<servlet-class>lodge.LodgeServlet</servlet-class>

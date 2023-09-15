@@ -22,7 +22,7 @@ public class ValidationFilter implements Filter  {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         System.out.println("ValidationFilter");
-        throw new UnsupportedOperationException("Unimplemented method 'doFilter'");
+        chain.doFilter(request, response);
     }
     
 }
