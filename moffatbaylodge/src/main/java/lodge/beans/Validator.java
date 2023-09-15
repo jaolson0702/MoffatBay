@@ -102,8 +102,8 @@ public class Validator {
     }
 
     // Password validations
-    public boolean isPasswordEmpty(String password) {
-        if (!password.isEmpty() && password != null) {
+    public boolean isPasswordValid(String password) {
+        if (password.isEmpty() || password == null) {
             errorMessages.add(PASSWORD_EMPTY);
             return false;
         }
