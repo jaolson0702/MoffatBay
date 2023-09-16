@@ -61,8 +61,9 @@
         </style>
     </head>
     <body>      
+        <%@ include file = "header.jsp" %>
+
         <div class="container">
-            <%@ include file = "header.jsp" %>
 
             <div class="main">
                 <div class="islandDesc">
@@ -104,7 +105,7 @@
                 </div>
             </div>
             
-            <%@ include file = "footer.jsp" %>
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
 </html>

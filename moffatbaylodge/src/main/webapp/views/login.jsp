@@ -19,34 +19,30 @@
 
         <title>Log In | Moffat Bay Lodge</title>
     </head>
-    <body>      
+    <body>    
+        <%@ include file = "header.jsp" %>  
         <div class="container">
-            <%@ include file = "header.jsp" %>
+            
 
             <div class="forms">
-
-                <% // Display error message if username/password is invalid
-                String loginMessage = (String)request.getAttribute("loginerror");  
-                if(loginMessage != null)
-                out.println("<font color=red size=4px>" + loginMessage + "</font>");
-                String registerMessage = (String)request.getAttribute("registerwelcome");  
-                if(registerMessage != null)
-                out.println("<font color=black size=3px>" + registerMessage + "</font>");
-                %>
             
                 <h1>Log In</h1>
-                <br /><br />
+                <br />
+                <%@ include file = "validationerrors.jsp" %>
+                <br />
                 <form method="POST" action="login">
                 <input type="text" placeholder="Enter Username" name="username" required/>
                 <br /><br />
                 <input type="password" placeholder="Enter Password" name="password" required/>
+                <input type="hidden" name="form-name" value="login" />
                 <br /><br />
                 <button type="submit">Login</button>
                 <br /><br />
                 </form>
             </div>
             
-            <%@ include file = "footer.jsp" %>
+            
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
 </html>

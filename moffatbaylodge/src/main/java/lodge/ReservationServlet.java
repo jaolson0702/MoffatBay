@@ -12,22 +12,18 @@ package lodge;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lodge.beans.Customer;
 import lodge.models.DataManager;
 
-import java.util.List;
-
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.sql.Date;
-
 import lodge.beans.Room;
 import lodge.beans.Reservation;
 
@@ -56,25 +52,40 @@ public class ReservationServlet extends jakarta.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-        // Set dataManager and pasword hasher
+        // Set dataManager and password hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
 
         if (request.getAttribute("reservation") == null && session.getAttribute("username") != null) {
-            
-            // Display rooms
-            List<Room> availableRooms = dm.getAvailableRooms((Date)request.getAttribute("checkin"), (Date)request.getAttribute("checkout"), (String)request.getAttribute("roomsize"));
+            System.out.println(request.getParameter("checkin"));
+            System.out.println(request.getParameter("checkout"));
+            Date checkIn = Date.valueOf(request.getParameter("checkin"));
+            Date checkOut = Date.valueOf(request.getParameter("checkout"));
+            String roomType = request.getParameter("roomsize");
+            ArrayList<Room> availableRooms = dm.getAvailableRooms(checkIn, checkOut, roomType);
+            Room room = new Room();
 
+            try {
+                room = availableRooms.get(0);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Did not find any available rooms: " + e.getMessage());
+                request.setAttribute("roomerror","No "+ roomType + " rooms are available.");
+                RequestDispatcher req = request.getRequestDispatcher("?action=reservation");
+                req.include(request, response);
+            }
+            
+            
+            // Set Reservation values from user input
             Reservation reservation = new Reservation();
             reservation.setCheckIn(request.getParameter("checkin"));
             reservation.setCheckOut(request.getParameter("checkout"));
-            reservation.setRoomsId(availableRooms.get(0).getId());
+            reservation.setRoomsId(room.getId());
             reservation.setCustomersId((int)session.getAttribute("userid"));
             reservation.setGuestCount(request.getParameter("guestcount"));
-
-            Room room = dm.getRoom(reservation.getRoomsId());
+            reservation.setNumberOfNights((int)TimeUnit.DAYS.convert(reservation.getCheckOut().getTime() - reservation.getCheckIn().getTime(), TimeUnit.MILLISECONDS));
 
             request.setAttribute("reservation", reservation);
             request.setAttribute("room", room);
+            System.out.println("Set request From ReservationServlet" + reservation.getId());
 
             // Display confirmation
             RequestDispatcher req = request.getRequestDispatcher("?action=reservationsummary");

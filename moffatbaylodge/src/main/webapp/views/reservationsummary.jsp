@@ -4,11 +4,17 @@
 -->
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
-    <%@page import="lodge.beans.Customer"%>
-    <%@page import="lodge.models.DataManager"%>
+    <%@page import="lodge.beans.Reservation"%>
+    <%@page import="lodge.beans.Room"%>
+    <%@page import="java.sql.Date"%>
+    <%@page import="java.math.BigDecimal"%>
+    <%@page import="java.util.concurrent.TimeUnit"%>
 <%
-    Reservation res = request.getAttribute("reservation");
-    Room room = request.getAttribute("room");
+    Reservation res = (Reservation)request.getAttribute("reservation");
+    Room room = (Room)request.getAttribute("room");
+    long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
+    String total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS))).toString();
+    //String total = (String)request.getAttribute("total");
 %>
 
     <!DOCTYPE html>
@@ -52,37 +58,52 @@
 
     </head>
     <body>
-
+        <%@ include file = "header.jsp" %>
         <div class="container">
-            <%@ include file = "header.jsp" %>
+            
 
             <div class="summaryForm">
                 <h1>Reservation Summary</h1>
                 <br /><br />
 
-                <form method="POST" action="reservation">
+                <form method="POST" action="summary">
            
-                <label type="date">Check-In Date</label> 
+                <label type="date">Check-In Date:</label> 
                 <label type="date"><%=res.getCheckIn()%></label>
                 <br/>
-                <label type="date">Check-Out Date</label>
+                <label type="date">Check-Out Date:</label>
                 <label type="date"><%=res.getCheckOut()%></label>
                 <br/>
-                <label type="guestcount">Guest Count</label>
+                <label type="guestcount">Guest Count:</label>
                 <label type="guestcount"><%=res.getGuestCount()%></label>
                 <br/>
-                <label type="roomtype">Room Size</label>
+                <label type="roomnumber">Room Number:</label>
+                <label type="roomnumber"><%=room.getId()%></label>
+                <br/>
+                <label type="roomtype">Room Size:</label>
                 <label type="roomtype"><%=room.getRoomSize()%></label>
-                <br/><br/>
-                <label type="total">Total</label>
-                <label type="total">Total</label>
-                <br/><br/><br/>
-                <button type="submit" class="button">Go Back</button>
-                <button type="submit" class="button">Submit</button>
+                <br/>
+                <label type="total">Number of nights:</label>
+                <label type="total"><%=res.getNumberOfNights()%></label>
+                <br/>
+                <label type="text">Rate:</label>
+                <label type="total"><%=room.getPrice()%></label>
+                <br/>
+                <label type="text">Total:</label>
+                <label type="total"><%=total%></label>
+
+                <input type="hidden" name="checkin" id="checkin" value="<%= res.getCheckIn() %>">
+                <input type="hidden" name="checkout" id="checkout" value="<%= res.getCheckOut() %>">
+                <input type="hidden" name="guestcount" id="guestcount" value="<%= res.getGuestCount() %>">
+                <input type="hidden" name="roomid" id="roomid" value="<%= room.getId() %>">
+
+                <button type="submit" name="cancel" class="button" formaction="summary?action=cancel">Go Back</button>
+                <button type="submit" name="submit" class="button" formaction="summary?action=submit">Submit</button>
                 </form>
             </div>
 
-            <%@ include file = "footer.jsp" %>
+            
         </div>
+        <%@ include file = "footer.jsp" %>
     </body>
     </html>

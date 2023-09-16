@@ -4,24 +4,10 @@
 -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
-<%
-    //String base = (String)application.getAttribute("base");
-    //String imageURL = (String)application.getAttribute("imageURL");
-%>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Gloock&display=swap"
-    rel="stylesheet"
-    />
 
-    <title>DELTA | CSD460</title>
-</head>
 <body>
 </body>
     

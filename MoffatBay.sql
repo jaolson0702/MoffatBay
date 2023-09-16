@@ -33,11 +33,30 @@ CREATE TABLE Bookings (
 );
 
 INSERT INTO rooms (id, room_size, available, price)
-VALUES  (101, 'double full beds', TRUE, '115.50'),
-        (102, 'queen bed', TRUE, '120.75'),
-        (103, 'double queen beds', TRUE, '131.25'),
-        (104, 'king bed', TRUE, '157.50'),
-        (105, 'double full beds', TRUE, '115.50');
+VALUES  (101, 'double full', TRUE, '115.50'),
+        (102, 'queen', TRUE, '120.75'),
+        (103, 'double queen', TRUE, '131.25'),
+        (104, 'king', TRUE, '157.50'),
+        (105, 'double full', TRUE, '115.50'),
+        (106, 'queen', TRUE, '120.75'),
+        (107, 'double queen', TRUE, '131.25'),
+        (108, 'king', TRUE, '157.50'),
+        (109, 'double full', TRUE, '115.50'),
+        (110, 'queen', TRUE, '120.75'),
+        (201, 'double queen', TRUE, '131.25'),
+        (202, 'king', TRUE, '157.50'),
+        (203, 'double full', TRUE, '115.50'),
+        (204, 'queen', TRUE, '120.75'),
+        (205, 'double queen', TRUE, '131.25'),
+        (206, 'king', TRUE, '157.50'),
+        (207, 'double full', TRUE, '115.50'),
+        (208, 'queen', TRUE, '120.75'),
+        (209, 'double queen', TRUE, '131.25'),
+        (210, 'king', TRUE, '157.50'),
+        (301, 'double full', TRUE, '115.50'),
+        (302, 'queen', TRUE, '120.75'),
+        (303, 'double queen', TRUE, '131.25'),
+        (304, 'king', TRUE, '157.50');
 
 insert into Customers (first_name, last_name, email, phone, password)
 VALUES  ('Anh', 'Vo', 'bellevueuni1@gmail.com', '402-717-8900','1000:5fa303aa461acad341889095aa92ea3b:44e89a49624ebdc3a438b493e84a0945031ffbe20e542476158d0ee19b4fcf48e053057ade72f0ae729064e5d9ef8fc59f73aa9f4209285d9ebbc5eca38916de'),
@@ -46,6 +65,6 @@ VALUES  ('Anh', 'Vo', 'bellevueuni1@gmail.com', '402-717-8900','1000:5fa303aa461
         ('Bryce', 'Kellas', 'bellevueuni4@gmail.com', '402-717-8787','1000:200caa25a3eb896c0b036d27c1476703:71accecf484db088b70b072b7bb6791cb82107349ab9990ef3096c0a872be105a79d822cc18e228f101fa717c376ac9f54d214eeb975028ee92e1f1697ad7d3d');
         
 INSERT INTO bookings (guest_count, check_in, check_out, rooms_id, customers_id)
-VALUES  (5, '2024-1-1', '2024-2-1', 103, 4),
-        (2, '2024-10-29', '2024-10-31', 104, 2),
-        (3, '2024-9-13', '2024-9-13', 101, 1);
+VALUES  (5, '2023-1-1', '2023-2-1', 103, 4),
+        (2, '2023-10-29', '2023-10-31', 104, 2),
+        (3, '2023-9-13', '2023-9-13', 101, 1);

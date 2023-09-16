@@ -14,14 +14,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 import lodge.beans.Customer;
 import lodge.beans.Reservation;
 import lodge.beans.Room;
-
-//import lodge.beans.Booking;
-//import lodge.beans.Room;
 
 public class DataManager {
     private String dbURL = "";
@@ -67,20 +64,33 @@ public class DataManager {
     }
 
     //---------- Booking operations ----------
-    /*
-    public String getBookingName(String categoryID) {
-        Booking category = BookingPeer.getBookingById(this, categoryID);
-        return (category == null) ? null : category.getName();
+    public void insertReservation(Reservation reservation) {
+        try {
+            Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ReservationPeer.insertReservation(stmt, reservation);
+        }
+        catch (SQLException e) {
+            System.out.println("Could not insert reservation: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    public Hashtable<String, String> getBookings() {
-        return BookingPeer.getAllBookings(this);
+    public Reservation getReservation(int id) {
+        return ReservationPeer.getReservationById(this, id);
     }
 
-    public Enumeration<String> getCatIDs() {
-        return BookingPeer.getAllBookings(this).keys();
+    public ArrayList<Reservation> getReservations(String email) {
+        return ReservationPeer.getReservationsByCustomerEmail(this, email);
     }
-    */
+
+    public Room getRoom(int roomId) {
+        return RoomPeer.getRoomById(this, roomId);
+    }
+
+    public ArrayList<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
+        return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
+    }
 
     //---------- Customer operations ----------
     public Customer getCustomerLogin(String email) {
@@ -123,23 +133,7 @@ public class DataManager {
         }
     }
 
-    public void insertReservation(Reservation reservation, Room room) {
-        try {
-            Connection connection = getConnection();
-            Statement stmt = connection.createStatement();
-            ReservationPeer.insertReservation(stmt, reservation, room);
-        }
-        catch (SQLException e) {
-            System.out.println("Could not insert reservation: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public Room getRoom(int roomId) {
-        return RoomPeer.getRoomById(this, roomId);
-    }
-
-    public List<Room> getAvailableRooms(Date checkin, Date checkout, String roomSize) {
-        return RoomPeer.getAvailableRooms(this, checkin, checkout, roomSize);
+    public Reservation getReservationByCustomerId(int cusId) {
+        return ReservationPeer.getReservationByCustomerId(this, cusId);
     }
 }
