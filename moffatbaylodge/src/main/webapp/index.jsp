@@ -18,13 +18,51 @@ pageEncoding="ISO-8859-1"%>
     />
 
     <title>DELTA | CSD460</title>
+
+    <style>
+        .main {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .gallery {
+            background-color: #000000;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <%@ include file = "views/header.jsp" %>
 
+        <div class="main">
+
+        <div class="welcome">
+            <table>
+                <colgroup>
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 60%;">
+                    <col span="1" style="width: 20%;">
+                </colgroup>
+            <tr>
+            <td>
+            <img src="<%=request.getContextPath()%>/images/salmonR.png" alt="salmon-right" />
+            </td>
+            <td>
+            <h1>Welcome to your home away from home.</h1>
+            <h5>JOVIEDSA ISLAND, WA</h5>
+            </td>
+            <td>
+            <img src="<%=request.getContextPath()%>/images/salmonL.png" alt="salmon-left" />
+            </td>
+            </table>
+        </div>
+
         <div class="gallery">
             <img src="<%=request.getContextPath()%>/images/photo1.jpg" alt="photo1" />
+        </div>
+        
         </div>
 
         <%@ include file = "views/footer.jsp" %>
