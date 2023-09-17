@@ -146,7 +146,7 @@ public class Validator {
     // Reservation ID validation
     public boolean isResIDValid(String id) {
         
-        if (!id.isEmpty() && id != null){
+        if (id.isEmpty() || id == null){
             errorMessages.add(RES_ID_EMPTY);
             return false;
         }
