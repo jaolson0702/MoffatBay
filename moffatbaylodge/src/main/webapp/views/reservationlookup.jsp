@@ -49,7 +49,7 @@
 
         .reservations {
             text-align: center;
-            color: #ffffff;
+            color: #000000;
             font-family: Arial, Helvetica, sans-serif;
         }
     </style>
