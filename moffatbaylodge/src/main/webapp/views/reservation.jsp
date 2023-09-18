@@ -60,6 +60,14 @@
     
             <%@ include file = "validationerrors.jsp" %>
 
+            <%
+                if (request.getAttribute("roomerror") != null) {
+                    %>
+                    <p class="error"><%=request.getAttribute("roomerror")%></p>
+                    <%
+                }
+            %>
+
             <form method="POST" action="book">
         
             <label for="checkin"> Check-In </label>
