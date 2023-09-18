@@ -46,6 +46,12 @@
             padding: 10px;
             border-radius: 4px;
         }
+
+        .reservations {
+            text-align: center;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 <body>
