@@ -77,7 +77,12 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
             System.out.println(e.getMessage());
         }
 
-        // Valid entries, meets requirements
+        dm.insertCustomer(customer);
+        request.setAttribute("registerwelcome","Welcome: Please sign in");
+        RequestDispatcher rd=request.getRequestDispatcher("?action=login");            
+        rd.include(request, response);
+
+      /*// Valid entries, meets requirements
         if (isCaseValid && emailIsValid && isPasswordLengthValid) {
             dm.insertCustomer(customer);
             request.setAttribute("registerwelcome","Welcome: Please sign in");
@@ -101,8 +106,9 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
             request.setAttribute("passwordcaseerror","Invalid Password: Must have at least one (1) uppercase and one (1) lowercase letter");
             RequestDispatcher rd=request.getRequestDispatcher("?action=register");            
             rd.include(request, response);
-        }
         
+        }
+        */
     }
 
 }

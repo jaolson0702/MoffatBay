@@ -29,6 +29,15 @@
                 <h1>Log In</h1>
                 <br />
                 <%@ include file = "validationerrors.jsp" %>
+
+                <%
+                if (request.getAttribute("roomerror") != null) {
+                    %>
+                    <p><%=request.getAttribute("registerwelcome")%></p>
+                    <%
+                }
+                %>
+
                 <br />
                 <form method="POST" action="login">
                 <input type="text" placeholder="Enter Username" name="username" required/>
