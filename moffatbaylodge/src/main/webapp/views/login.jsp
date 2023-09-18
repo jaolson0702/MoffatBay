@@ -31,7 +31,7 @@
                 <%@ include file = "validationerrors.jsp" %>
 
                 <%
-                if (request.getAttribute("roomerror") != null) {
+                if (request.getAttribute("registerwelcome") != null) {
                     %>
                     <p><%=request.getAttribute("registerwelcome")%></p>
                     <%
