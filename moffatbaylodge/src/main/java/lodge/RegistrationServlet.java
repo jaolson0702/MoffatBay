@@ -59,12 +59,6 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
         customer.setLastName(request.getParameter("lastname"));
         customer.setEmail(request.getParameter("email"));
         customer.setPhoneNumber(request.getParameter("phone"));
-
-        // Password and Email validations
-        boolean isPasswordLengthValid = request.getParameter("psw").length() >= 8;
-        boolean emailIsValid = request.getParameter("email").matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        boolean isCaseValid = StringUtils.isMixedCase(request.getParameter("psw"));
         
         // Hash 
         try {
@@ -82,33 +76,6 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
         RequestDispatcher rd=request.getRequestDispatcher("?action=login");            
         rd.include(request, response);
 
-      /*// Valid entries, meets requirements
-        if (isCaseValid && emailIsValid && isPasswordLengthValid) {
-            dm.insertCustomer(customer);
-            request.setAttribute("registerwelcome","Welcome: Please sign in");
-            RequestDispatcher rd=request.getRequestDispatcher("?action=login");            
-            rd.include(request, response);
-        }
-        if (!emailIsValid) {
-            // Post back to login page
-            request.setAttribute("emailerror","Invalid email");
-            RequestDispatcher rd=request.getRequestDispatcher("?action=register");            
-            rd.include(request, response);
-        }
-        if (isPasswordLengthValid) { 
-            // Post back to login page
-            request.setAttribute("passwordlengtherror","Invalid Password: Must be at least eight (8) characters");
-            RequestDispatcher rd=request.getRequestDispatcher("?action=register");            
-            rd.include(request, response);
-        } 
-        if (!isCaseValid) { 
-            // Post back to login page
-            request.setAttribute("passwordcaseerror","Invalid Password: Must have at least one (1) uppercase and one (1) lowercase letter");
-            RequestDispatcher rd=request.getRequestDispatcher("?action=register");            
-            rd.include(request, response);
-        
-        }
-        */
     }
 
 }
