@@ -25,11 +25,12 @@ pageEncoding="ISO-8859-1"%>
         <a href="<%=base%>?action=reservationlookup">Reservation Lookup</a>
 
         <div class="account">
-            <a href="<%=base%>?action=registration">Registration</a>
+            
             <% 
             if (session.getAttribute("username") != null) {
                 out.print("<a href=\"" + base + "?action=logout\">Log Out</a>");
             } else {
+                out.print("<a href=\"" + base + "?action=registration\">Registration</a>");
                 out.print("<a href=\"" + base + "?action=login\">Log In</a>");
             }
             %>
