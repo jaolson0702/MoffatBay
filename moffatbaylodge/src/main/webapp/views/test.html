@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        function setRoom(room){
+            if (room=='double-full') {
+                val = 'double full';
+            } else if (room=='queen') {
+                val = 'queen';
+            }else if (room=='double-queen') {
+                val = 'double queen';
+            }else if (room=='king') {
+                val = 'king';
+            }
+            const changeSelected = (e) => {
+                const $select = document.querySelector('#roomsize');
+                $select.value = val
+            };
+            changeSelected;
+        }
+    </script>
+</head>
+<body>
+    
+
+<div class="resform">
+            
+    <h1>Reservation</h1>
+
+    <form method="POST" action="book">
+
+    <label for="checkin"> Check-In </label>
+    <input type="date" name="checkin" min="<%=LocalDate.now() %>" required >   
+    <label for="checkout"> Check-Out </label>
+    <input type="date" name="checkout" min="<%=LocalDate.now() %>" required >   
+    <label for="guestcount"> Guest Count </label>
+    <select name="guestcount" id="guestcount" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>                      
+        <option value="5">5</option>
+    </select>
+    <label for="roomsize"> Room Size </label>
+    <select name="roomsize" id="roomsize" required>
+        <option value="double full">Double Full</option>
+        <option value="queen">Queen</option>
+        <option value="double queen">Double Queen </option>
+        <option value="king">King</option>                      
+    </select>   
+    <input type="hidden" name="form-name" value="reserve" />
+    <button type="submit" class="button">Review</button>
+    </form>
+</div>
+
+<div class="cards flex">
+    <div class="card flex-item" id="double-full" onclick="setRoom('double-full')">
+        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..."  >
+        <div class="card-body">
+            <h3 class="card-title">Double Full Beds</h3>
+            <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            $100.00
+        </div>
+    </div>
+
+    <div class="card flex-item" id="queen" onclick="setRoom('queen')">
+        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h3 class="card-title">Queen Bed</h3>
+            <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            $100.00
+        </div>
+    </div>
+
+    <div class="card flex-item" id="double-queen" onclick="setRoom('double-queen')">
+        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h3 class="card-title">Double Queen Beds</h3>
+            <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            $100.00
+        </div>
+    </div>
+
+    <div class="card flex-item" id="king" onclick="setRoom('king')">
+        <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h3 class="card-title">King Bed</h3>
+            <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            $100.00
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+        min-width: 300px;
+
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+
+        &:hover {
+            cursor: pointer;
+        /*    transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
+            -webkit-box-shadow: 3px 3px 5px #000;
+            -moz-box-shadow: 3px 3px 5px #000;
+            box-shadow: 3px 3px 5px #000;
+            -webkit-backface-visibility: hidden;
+        */
+        }
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    .card-body {
+        padding: 2px 16px;
+    }
+    h3 {
+        background-color: transparent;
+        color: black;
+        text-align: center;
+    }
+    .flex {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: center;
+        justify-content: center;
+        min-width: 200px;
+        max-width: 1160px;
+        margin-left: auto;
+        margin-right: auto;
+    }    
+    .flex-item {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: left;
+        margin: 2rem;
+    }
+    .flex {
+        background-color: gray;
+    }
+    .flex-item>img {
+        border-radius: 5px 5px 0 0;
+        height: 500px;
+        width: 100%;
+        object-fit: cover;
+        /*-webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
+            -webkit-box-shadow: 3px 3px 5px #000;
+            -moz-box-shadow: 3px 3px 5px #000;
+            box-shadow: 3px 3px 5px #000;
+            -webkit-backface-visibility: hidden;
+        }
+        */
+    }
+
+    @media (max-width: 800px) {
+        .flex {
+            flex-direction: column;
+        } 
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            width: 100%;
+            min-width: none;
+        }
+    }
+</style>
+
+</body>
+</html>
