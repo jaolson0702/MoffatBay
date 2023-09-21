@@ -1,3 +1,9 @@
+/* Team Delta
+ * Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
+ * Authors: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
+ * 
+ */
+
 DROP DATABASE IF EXISTS MoffatBay;
 CREATE DATABASE MoffatBay;
 USE MoffatBay;
