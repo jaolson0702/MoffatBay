@@ -165,9 +165,10 @@
             -o-transition: all 1s ease;
             transition: all 1s ease;
 
+            /*
             &:hover {
                 cursor: pointer;
-            /*    transform: scale(1.05);
+                transform: scale(1.05);
                 -webkit-transform: scale(1.05);
                 -moz-transform: scale(1.05);
                 -ms-transform: scale(1.05);
@@ -250,6 +251,9 @@
                 flex-direction: column;
                 width: 100%;
             } 
+            .flex-item {
+                width: 100%;
+            }
             .card {
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 min-width: none;
