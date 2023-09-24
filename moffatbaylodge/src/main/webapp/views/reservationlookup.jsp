@@ -59,10 +59,11 @@
 <body>
     <%@ include file = "header.jsp" %>
     <div class="container">
+        
         <h1 class="page-header">Reservation Lookup</h1>
-
+        
         <div class="resform">
-    
+            
             <%@ include file = "validationerrors.jsp" %>
 
             <%
@@ -73,61 +74,19 @@
                 }
             %>
             <form method="POST" action="lookup">
-        
-            <input type="text" name="search" placeholder="Search...">
-            <select name="searchby" id="searchby" required>
-                <option value="">Search by...</option>
-                <option value="resid">Reservation ID</option>
-                <option value="email">Email</option>
-            </select>
-            <input type="hidden" name="form-name" value="lookup" />
-            
-            <button type="submit" class="button">Search</button>
+                <input type="text" name="search" placeholder="Search...">
+                <select name="searchby" id="searchby" required>
+                    <option value="">Search by...</option>
+                    <option value="resid">Reservation ID</option>
+                    <option value="email">Email</option>
+                </select>
+                <input type="hidden" name="form-name" value="lookup" />
+                
+                <button type="submit" class="button">Search</button>
             </form>
-        </div>
 
-        <% if (request.getAttribute("reservations") != null) { %>
-            <div class="reservations">
-                <%
-                ArrayList<Reservation> reservations = (ArrayList<Reservation>)request.getAttribute("reservations");
-                ArrayList<Room> rooms = (ArrayList<Room>)request.getAttribute("rooms");
-                for (int i = 0; i < reservations.size(); i++) {
-                    Reservation res = reservations.get(i);
-                    Room room = rooms.get(i);
-                    long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
-                    String total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS))).toString(); %>
-                    <div class="reservation">
-                        <label type="number">Id:</label>
-                        <label type="number"><%=res.getId()%></label>
-                        <br/>
-                        <label type="date">Check-In Date:</label> 
-                        <label type="date"><%=res.getCheckIn()%></label>
-                        <br/>
-                        <label type="date">Check-Out Date:</label>
-                        <label type="date"><%=res.getCheckOut()%></label>
-                        <br/>
-                        <label type="guestcount">Guest Count:</label>
-                        <label type="guestcount"><%=res.getGuestCount()%></label>
-                        <br/>
-                        <label type="roomnumber">Room Number:</label>
-                        <label type="roomnumber"><%=room.getId()%></label>
-                        <br/>
-                        <label type="roomtype">Room Size:</label>
-                        <label type="roomtype"><%=room.getRoomSize()%></label>
-                        <br/>
-                        <label type="total">Number of nights:</label>
-                        <label type="total"><%=res.getNumberOfNights()%></label>
-                        <br/>
-                        <label type="text">Rate:</label>
-                        <label type="total"><%=room.getPrice()%></label>
-                        <br/>
-                        <label type="text">Total:</label>
-                        <label type="total"><%=total%></label>
-                    </div>
-                <% } %>
-            </div>
-        <% } %>
-        
+            <%@ include file = "lookupresults.jsp" %>
+        </div>
     </div>
     <%@ include file = "footer.jsp" %>
 </body>
