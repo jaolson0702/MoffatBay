@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
