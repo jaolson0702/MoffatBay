@@ -6,7 +6,6 @@
  * Adapted from: Beginning Jakarta EE Web Development, Third Edition - 2020 - Authors: Luciano Manelli, Giulio Zambon
  *      Accessed 9/2/2023
  * 
- * TODO: Register: Use JavaScript for form validations?
  */
 package lodge;
 
@@ -14,8 +13,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
-
-import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;

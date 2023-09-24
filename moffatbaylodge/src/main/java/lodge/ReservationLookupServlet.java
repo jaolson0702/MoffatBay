@@ -6,7 +6,6 @@
  * Adapted from: Beginning Jakarta EE Web Development, Third Edition - 2020 - Authors: Luciano Manelli, Giulio Zambon
  *      Accessed 9/2/2023
  * 
- * TODO: Register: Use JavaScript for form validations?
  */
 package lodge;
 
@@ -18,12 +17,9 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lodge.models.DataManager;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-import java.sql.Date;
 import lodge.beans.Room;
 import lodge.beans.Reservation;
 
@@ -50,7 +46,6 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
 
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         
         // Set dataManager and password hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");

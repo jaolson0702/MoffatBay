@@ -1,10 +1,7 @@
 package lodge.filters;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
-
-import org.apache.commons.lang3.Validate;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
