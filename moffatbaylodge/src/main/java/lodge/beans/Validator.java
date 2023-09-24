@@ -6,7 +6,6 @@
 package lodge.beans;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
@@ -37,9 +36,9 @@ public class Validator {
     // Date messages
     private static final String DATES_EMPTY = "Check-in and check-out dates are required";
     private static final String DATES_INVALID = "Check-out date must be later than the check-in date";
-    private static final String CHECKIN_EMPTY = "Check-in date is required";
-    private static final String CHECKIN_INVALID = "Check-out date must be later than the check-in date";
-    private static final String CHECKOUT_EMPTY = "Check-out date is required";
+    //private static final String CHECKIN_EMPTY = "Check-in date is required";
+    //private static final String CHECKIN_INVALID = "Check-out date must be later than the check-in date";
+    //private static final String CHECKOUT_EMPTY = "Check-out date is required";
 
     // Search messages
     private static final String SEARCHBY_EMPTY = "Search by selection is required";

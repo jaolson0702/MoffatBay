@@ -78,7 +78,16 @@ public class ReservationLookupServlet extends jakarta.servlet.http.HttpServlet {
             
         }  
         if (request.getParameter("searchby").equals("resid")) {
-            Reservation reservation = dm.getReservation(Integer.parseInt(keyword));
+            Reservation reservation = null;
+
+            try { // Check if an integer was entered.
+                reservation = dm.getReservation(Integer.parseInt(keyword));
+            } catch (NumberFormatException e) {
+                System.out.println("Email in resid");
+                request.setAttribute("reserror","Please enter valid Reservation ID");
+                RequestDispatcher req = request.getRequestDispatcher("?action=reservationlookup");
+                req.include(request, response);
+            }
             
             // Redirect to form again if no reservation found
             if (reservation == null) {

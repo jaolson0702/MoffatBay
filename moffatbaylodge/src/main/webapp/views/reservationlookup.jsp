@@ -65,6 +65,13 @@
     
             <%@ include file = "validationerrors.jsp" %>
 
+            <%
+                if (request.getAttribute("reserror") != null) {
+                    %>
+                    <p class="error"><%=request.getAttribute("reserror")%></p>
+                    <%
+                }
+            %>
             <form method="POST" action="lookup">
         
             <input type="text" name="search" placeholder="Search...">
