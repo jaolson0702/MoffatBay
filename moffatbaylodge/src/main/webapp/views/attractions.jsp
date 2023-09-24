@@ -69,7 +69,7 @@
 
         <div class="container">
 
-            <h1>Attractions</h1>
+            <h1 class="page-header">Attractions</h1>
         
         <div class="row">
           <div class="column">

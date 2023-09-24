@@ -83,7 +83,7 @@
                     <h3 class="card-title">Double Full Beds</h3>
                     <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    $115.50
+                    <p>$115.50</p>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@
                     <h3 class="card-title">Queen Bed</h3>
                     <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    $120.75
+                    <p>$120.75</p>
                 </div>
             </div>
 
@@ -103,7 +103,7 @@
                     <h3 class="card-title">Double Queen Beds</h3>
                     <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    $131.25
+                    <p>$131.25</p>
                 </div>
             </div>
 
@@ -113,7 +113,7 @@
                     <h3 class="card-title">King Bed</h3>
                     <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    $157.50
+                    <p>$157.50</p>
                 </div>
             </div>
         </div> <!-- end cards -->
@@ -121,14 +121,19 @@
     <style>
         form {
             display: inline;
+            background-color: #ffffff;
+        }
+        label, input, select {
+            padding: 0.5em;
+            border-radius: 5px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
         }
         .resform {
-            background-color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1em;
             width: 80%;
             text-align: center;
-            margin-top: 5%;
             margin-left: auto;
             margin-right: auto;
             padding: 10px;
@@ -144,8 +149,8 @@
             color: #FFB287;
             text-align: center;
             text-decoration: none;
-            font-size: 1em;
-            padding: 10px;
+            height: fit-content;
+            padding: 0.5em;
             border-radius: 4px;
         }
 
@@ -181,6 +186,7 @@
         }
         .card-body {
             padding: 2px 16px;
+            background-color: #dcf6ff;
         }
         h3 {
             background-color: transparent;
@@ -192,6 +198,7 @@
             flex-flow: row wrap;
             align-content: center;
             justify-content: center;
+            align-items: center;
             min-width: 200px;
             max-width: 1160px;
             margin-left: auto;
@@ -201,7 +208,7 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: left;
-            margin: 2rem;
+            margin: 30px 10px;
         }
         .flex-item.form {
             display: grid;
@@ -239,40 +246,19 @@
             */
         }
 
-        @media screen and (max-width: 820px) {
+        @media screen and (max-width: 850px) {
             .flex {
                 flex-direction: column;
+                width: 100%;
             } 
             .card {
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                width: 100%;
                 min-width: none;
             }
             form {
                 display: inline;
             }
-            .grid-container{
-                display: grid;
-                gap: 10px 10px;
-            }
-            .grid-item {
-                text-align: left;
-                width: 8em;
-            }
-            .grid-item.label{
-                grid-row: 1;
-            }
-            .grid-item.input{
-                grid-row: 2;
-            }
 
-            .grid-item-button {
-                grid-row: 3;
-            }
-            .grid-item-button {
-                grid-row: 5;
-                grid-column: 1/3;
-            }
         }
     </style>
     <%@ include file = "footer.jsp" %>

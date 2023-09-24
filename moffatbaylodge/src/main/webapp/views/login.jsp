@@ -18,15 +18,23 @@
         <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
 
         <title>Log In | Moffat Bay Lodge</title>
+        <style>
+            label, input {
+                padding: 0.5em;
+                border-radius: 5px;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+        </style>
     </head>
     <body>    
         <%@ include file = "header.jsp" %>  
         <div class="container">
-            
 
+            <h1 class="page-header">Log In</h1>
             <div class="forms">
             
-                <h1>Log In</h1>
                 <br />
                 <%@ include file = "validationerrors.jsp" %>
 

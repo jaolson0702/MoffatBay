@@ -35,13 +35,19 @@
             .summaryForm {
                 background-color: #ffffff;
                 font-family: Arial, Helvetica, sans-serif;
-                font-size: 1em;
                 width: 75%;
                 text-align: center;
                 display: block;
                 margin: 10% auto;
                 padding: 10px;
                 box-shadow: 5px 5px 5px lightgrey;
+            }
+            label, input {
+                padding: 0.5em;
+                border-radius: 5px;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
 
             .button {
@@ -63,10 +69,12 @@
     </head>
     <body>
         <%@ include file = "header.jsp" %>
+        
         <div class="container">
+        <h1 class="page-header">Reservation Confirmation</h1>
 
             <div class="summaryForm">
-                <h1>Reservation Confirmation</h1>
+                
                 <table>
                     <tr>
                         <th>Reservation Id</th>

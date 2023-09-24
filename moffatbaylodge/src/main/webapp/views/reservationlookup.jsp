@@ -23,12 +23,9 @@
         .resform {
             background-color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1em;
-            width: 80%;
             text-align: center;
             margin-top: 5%;
             margin-bottom: 10%;
-            margin-left: 10%;
             padding: 10px;
             box-shadow: 5px 5px 5px lightgrey;
         }
@@ -42,8 +39,7 @@
             color: #FFB287;
             text-align: center;
             text-decoration: none;
-            font-size: 1em;
-            padding: 10px;
+            padding: 0.5em;
             border-radius: 4px;
         }
 
@@ -52,14 +48,21 @@
             color: #000000;
             font-family: Arial, Helvetica, sans-serif;
         }
+        input, select {
+            padding: 0.5em;
+            border-radius: 5px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
     <%@ include file = "header.jsp" %>
     <div class="container">
+        <h1 class="page-header">Reservation Lookup</h1>
 
         <div class="resform">
-            <h1>Reservation Lookup</h1>
     
             <%@ include file = "validationerrors.jsp" %>
 
