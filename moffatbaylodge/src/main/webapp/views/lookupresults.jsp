@@ -8,7 +8,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.math.BigDecimal"%>
-<%@page import="java.util.concurrent.TimeUnit"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.apache.commons.text.WordUtils"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,7 @@
             
             ArrayList<Reservation> reservations = (ArrayList<Reservation>)request.getAttribute("reservations");
             ArrayList<Room> rooms = (ArrayList<Room>)request.getAttribute("rooms");
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM d, yyyy");
             
             // Card section
             out.print("<div class=\"cards reservations flex\">");
@@ -32,7 +34,8 @@
                 Reservation res = reservations.get(i);
                 Room room = rooms.get(i);
                 //long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
-                String total = room.getPrice().multiply(BigDecimal.valueOf(res.getNumberOfNights())).toString(); 
+                BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(res.getNumberOfNights())); 
+
 
                 out.print("<div class=\"card flex-item\">");
                     // Add image of room
@@ -54,18 +57,18 @@
                 // Card body
                 out.print("<div class=\"card-body\">");
                 out.print("<h3 class=\"card-title\">Reservation ID: " + res.getId() + "</h3>");
-                out.print("<h4 class=\"card-subtitle\">Room: " + res.getRoomsId() + ", " + room.getRoomSize() + "</h4>");
+                out.print("<h4 class=\"card-subtitle\">Room: " + res.getRoomsId() + ", " + WordUtils.capitalizeFully(room.getRoomSize()) + "</h4>");
                     
                 // Table for dates and nights
                 out.print("<div class=\"dates\">");
-                out.print("<table><tr><td class=\"left\">Check-in:</td><td class=\"right\">" + res.getCheckIn() + "</td></tr>");
-                out.print("<tr><td class=\"left\">Check-out:</td><td class=\"right\">" + res.getCheckOut() + "</td></tr>");
+                out.print("<table class=\"page\"><tr><td class=\"left\">Check-in:</td><td class=\"right\">" + sdf.format(res.getCheckIn()) + "</td></tr>");
+                out.print("<tr><td class=\"left\">Check-out:</td><td class=\"right\">" + sdf.format(res.getCheckOut()) + "</td></tr>");
                 out.print("<tr><td class=\"left\"></td><td class=\"right\">" + res.getNumberOfNights() + " nights</td></tr></table>");
                 out.print("</div>");
                 
                 // Rate and total
-                out.print("<table><tr><td class=\"left\">Nightly rate:</td><td class=\"right\">" + room.getPrice() + "</td></tr>");
-                out.print("<tr><td class=\"total left\">Total:</td><td class=\"total right\">" + total + "</td></tr></table>");
+                out.print("<table class=\"page\"><tr><td class=\"left\">Nightly rate:</td><td class=\"right\">" + String.format("$%,.2f", room.getPrice()) + "</td></tr>");
+                out.print("<tr><td class=\"total left\">Total:</td><td class=\"total right\">" + String.format("$%,.2f", total) + "</td></tr></table>");
                 
                 // End card body
                 out.print("</div>");
@@ -88,7 +91,7 @@
             height: fit-content;
             transition: 0.3s;
             width: 40%;
-            min-width: 300px;
+            min-width: 23em;
 
             -webkit-transition: all 1s ease;
             -moz-transition: all 1s ease;
@@ -119,20 +122,29 @@
             padding: 2px 8px;
             background-color: #dcf6ff;
         }
-        table {
+        table[class="page"] {
             padding: 0;
             margin: 1em 0;
         }
         .dates {
-            padding: 1em;
+            padding: 5px;
             background-color: #fffafa;
             border-radius: 8px;
+            font-size: 14px;
         }
         .left {
             text-align: left;
+            min-width: 6em;
+            font-size: 14px;
         }
         .right {
             text-align: right;
+            min-width: 13em;
+            font-size: 14px;
+        }
+        .total {
+            font-weight: 800;
+            font-size: 16px;
         }
         h3 {
             background-color: transparent;
@@ -174,7 +186,7 @@
         }
         .flex-item>img {
             border-radius: 5px 5px 0 0;
-            height: 500px;
+            height: 300px;
             width: 100%;
             object-fit: cover;
             /*-webkit-transition: all 1s ease;

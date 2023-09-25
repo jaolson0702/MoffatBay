@@ -9,11 +9,14 @@
     <%@page import="java.sql.Date"%>
     <%@page import="java.math.BigDecimal"%>
     <%@page import="java.util.concurrent.TimeUnit"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="org.apache.commons.text.WordUtils"%>
 <%
     Reservation res = (Reservation)request.getAttribute("reservation");
     Room room = (Room)request.getAttribute("room");
     long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
-    String total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS))).toString();
+    BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)));
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM d, yyyy");
     //String total = (String)request.getAttribute("total");
 %>
 
@@ -74,10 +77,10 @@
                 <form method="POST" action="summary">
            
                 <label type="date">Check-In Date:</label> 
-                <label type="date"><%=res.getCheckIn()%></label>
+                <label type="date"><%=sdf.format(res.getCheckIn())%></label>
                 <br/>
                 <label type="date">Check-Out Date:</label>
-                <label type="date"><%=res.getCheckOut()%></label>
+                <label type="date"><%=sdf.format(res.getCheckOut())%></label>
                 <br/>
                 <label type="guestcount">Guest Count:</label>
                 <label type="guestcount"><%=res.getGuestCount()%></label>
@@ -86,16 +89,16 @@
                 <label type="roomnumber"><%=room.getId()%></label>
                 <br/>
                 <label type="roomtype">Room Size:</label>
-                <label type="roomtype"><%=room.getRoomSize()%></label>
+                <label type="roomtype"><%=WordUtils.capitalizeFully(room.getRoomSize())%></label>
                 <br/>
                 <label type="total">Number of nights:</label>
                 <label type="total"><%=res.getNumberOfNights()%></label>
                 <br/>
                 <label type="text">Rate:</label>
-                <label type="total"><%=room.getPrice()%></label>
+                <label type="total"><%=String.format("$%,.2f", room.getPrice())%></label>
                 <br/>
                 <label type="text">Total:</label>
-                <label type="total"><%=total%></label>
+                <label type="total"><%=String.format("$%,.2f", total)%></label>
 
                 <input type="hidden" name="checkin" id="checkin" value="<%= res.getCheckIn() %>">
                 <input type="hidden" name="checkout" id="checkout" value="<%= res.getCheckOut() %>">

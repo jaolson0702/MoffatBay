@@ -23,8 +23,6 @@
             background-color: #ffffff;
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
-            margin-top: 5%;
-            margin-bottom: 10%;
             padding: 10px;
             box-shadow: 5px 5px 5px lightgrey;
         }

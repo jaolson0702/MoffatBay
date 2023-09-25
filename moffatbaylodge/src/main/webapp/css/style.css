@@ -14,8 +14,9 @@ header {
 
 header img {
     display: block;
+    object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 200px;
 }
 #banner {
     position: relative;

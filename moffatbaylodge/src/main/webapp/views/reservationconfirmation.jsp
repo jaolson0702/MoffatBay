@@ -9,11 +9,14 @@
     <%@page import="java.sql.Date"%>
     <%@page import="java.math.BigDecimal"%>
     <%@page import="java.util.concurrent.TimeUnit"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="org.apache.commons.text.WordUtils"%>
 <%
     Reservation res = (Reservation)request.getAttribute("reservation");
     Room room = (Room)request.getAttribute("room");
     long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
-    String total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS))).toString();
+    BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)));
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM d, yyyy");
     // String total = (String)request.getAttribute("total");
 %>
 
@@ -86,12 +89,12 @@
                     </tr>
                     <tr>
                         <td><%= res.getId() %></td>
-                        <td><%= res.getCheckIn() %></td>
-                        <td><%= res.getCheckOut() %></td>
+                        <td><%= sdf.format(res.getCheckIn()) %></td>
+                        <td><%= sdf.format(res.getCheckOut()) %></td>
                         <td><%= res.getGuestCount() %></td>
                         <td><%= res.getRoomsId() %></td>
-                        <td><%= room.getRoomSize() %></td>
-                        <td><%= total %></td>
+                        <td><%= WordUtils.capitalizeFully(room.getRoomSize()) %></td>
+                        <td><%= String.format("$%,.2f", total) %></td>
                     </tr>
                 </table>
                 <button id="email" onclick="displayEmailSuccess()">Email me this information</button>
