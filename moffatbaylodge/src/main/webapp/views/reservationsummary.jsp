@@ -17,7 +17,6 @@
     long difference = res.getCheckOut().getTime() - res.getCheckIn().getTime();
     BigDecimal total = room.getPrice().multiply(BigDecimal.valueOf(TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)));
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-    //String total = (String)request.getAttribute("total");
 %>
 
     <!DOCTYPE html>
@@ -75,7 +74,43 @@
                 <br /><br />
 
                 <form method="POST" action="summary">
-           
+
+                <table>
+                    <tr>
+                        <td>Check-In Date:</td>
+                        <td><%=sdf.format(res.getCheckIn())%></td>
+                    </tr>
+                    <tr>
+                        <td>Check-Out Date:</td>
+                        <td><%=sdf.format(res.getCheckOut())%></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Guests:</td>
+                        <td><%=res.getGuestCount()%></td>
+                    </tr>
+                    <tr>
+                        <td>Room Number:</td>
+                        <td><%=room.getId()%></td>
+                    </tr>
+                    <tr>
+                        <td>Room Type:</td>
+                        <td><%=WordUtils.capitalizeFully(room.getRoomSize())%></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Nights:</td>
+                        <td><%=res.getNumberOfNights()%></td>
+                    </tr>
+                    <tr>
+                        <td>Nightly Rate:</td>
+                        <td><%=String.format("$%,.2f", room.getPrice())%></td>
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td><%=String.format("$%,.2f", total)%></td>
+                    </tr>
+                </table>
+
+                <!--
                 <label type="date">Check-In Date:</label> 
                 <label type="date"><%=sdf.format(res.getCheckIn())%></label>
                 <br/>
@@ -99,6 +134,7 @@
                 <br/>
                 <label type="text">Total:</label>
                 <label type="total"><%=String.format("$%,.2f", total)%></label>
+                -->
 
                 <input type="hidden" name="checkin" id="checkin" value="<%= res.getCheckIn() %>">
                 <input type="hidden" name="checkout" id="checkout" value="<%= res.getCheckOut() %>">
