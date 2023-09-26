@@ -139,10 +139,6 @@
             box-shadow: 5px 5px 5px 5px lightgrey;
         }
 
-        .resform > h1 {
-            text-align: left;
-        }
-
         .button {
             background-color: #000000;
             color: #FFB287;

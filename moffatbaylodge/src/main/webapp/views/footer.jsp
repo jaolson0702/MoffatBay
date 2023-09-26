@@ -37,6 +37,7 @@ pageEncoding="ISO-8859-1"%>
                 out.print("<a href=\"" + base + "?action=logout\">Log Out</a>");
             } else {
                 out.print("<a href=\"" + base + "?action=registration\">Registration</a>");
+                out.print(" | ");
                 out.print("<a href=\"" + base + "?action=login\">Log In</a>");
             }
         %>

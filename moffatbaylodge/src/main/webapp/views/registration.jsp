@@ -50,8 +50,11 @@
                 <input type="text" placeholder="Email" name="email" required />
                 <br /><br />
                 <input type="password" placeholder="Password" name="psw" required />
-                <input type="hidden" name="form-name" value="register" />
+                <span style="font-size: 9px;">Password Requirements: At least 8 characters, one uppercase letter, one lowercase letter</span>
                 <br /><br />
+                <input type="password" placeholder="Confirm Password" name="pswcon" required />
+                <br /><br />
+                <input type="hidden" name="form-name" value="register" />
                 <button type="submit" class="registerbtn">Register</button>
                 </form>
             </div>

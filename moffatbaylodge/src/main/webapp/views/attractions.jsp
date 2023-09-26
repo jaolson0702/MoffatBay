@@ -58,6 +58,7 @@
         /* Style the counter cards */
         .card {
           padding: 16px;
+          padding-left: 0;
           text-align: center;
           background-color: #ffffff;
         }

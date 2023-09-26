@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.RequestDispatcher;
@@ -45,6 +46,21 @@ public class RegistrationServlet extends jakarta.servlet.http.HttpServlet {
 
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Check password confirmation
+        String passwordConfirmation = request.getParameter("pswcon");
+
+        ArrayList<String> errors = new ArrayList<>();
+
+        if (!passwordConfirmation.equals(request.getParameter("psw"))) {
+            errors.add("The password and the password confirmation must be the same.");
+        }
+
+        if (!errors.isEmpty()) {
+            request.setAttribute("errors", errors);
+            RequestDispatcher rdError = request.getRequestDispatcher("?action=registration");
+            rdError.include(request, response);
+        }
 
         // Set dataManager and pasword hasher
         DataManager dm = (DataManager)getServletContext().getAttribute("dataManager");
