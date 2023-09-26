@@ -27,6 +27,12 @@ pageEncoding="ISO-8859-1"%>
         .gallery {
             background-color: #000000;
         }
+
+        img {
+            max-width: 100%;
+        }
+
+        </style>
     </style>
 </head>
 <body>

@@ -57,6 +57,12 @@
             .main .contact {
                 text-align: center;
             }
+
+            img {
+                max-width: 100%;
+            }
+
+        </style>
         </style>
     </head>
     <body>      
