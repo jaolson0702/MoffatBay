@@ -12,6 +12,7 @@ package lodge;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -80,7 +81,9 @@ public class LoginServlet extends jakarta.servlet.http.HttpServlet {
             req.forward(request, response);
         }
         else {  
-            request.setAttribute("loginerror","Invalid Username or Password");
+            ArrayList<String> errors = new ArrayList<>();
+            errors.add("Invalid Username or Password");
+            request.setAttribute("errors",errors);
             System.out.println("invalid login");
                         
             // Post back to login page
