@@ -61,6 +61,10 @@
                 padding: 10px;
                 border-radius: 4px;
             }
+
+            table td:first-of-type {
+                text-align: right;
+            }
         </style>
 
     </head>
@@ -109,32 +113,6 @@
                         <td><%=String.format("$%,.2f", total)%></td>
                     </tr>
                 </table>
-
-                <!--
-                <label type="date">Check-In Date:</label> 
-                <label type="date"><%=sdf.format(res.getCheckIn())%></label>
-                <br/>
-                <label type="date">Check-Out Date:</label>
-                <label type="date"><%=sdf.format(res.getCheckOut())%></label>
-                <br/>
-                <label type="guestcount">Guest Count:</label>
-                <label type="guestcount"><%=res.getGuestCount()%></label>
-                <br/>
-                <label type="roomnumber">Room Number:</label>
-                <label type="roomnumber"><%=room.getId()%></label>
-                <br/>
-                <label type="roomtype">Room Size:</label>
-                <label type="roomtype"><%=WordUtils.capitalizeFully(room.getRoomSize())%></label>
-                <br/>
-                <label type="total">Number of nights:</label>
-                <label type="total"><%=res.getNumberOfNights()%></label>
-                <br/>
-                <label type="text">Rate:</label>
-                <label type="total"><%=String.format("$%,.2f", room.getPrice())%></label>
-                <br/>
-                <label type="text">Total:</label>
-                <label type="total"><%=String.format("$%,.2f", total)%></label>
-                -->
 
                 <input type="hidden" name="checkin" id="checkin" value="<%= res.getCheckIn() %>">
                 <input type="hidden" name="checkout" id="checkout" value="<%= res.getCheckOut() %>">

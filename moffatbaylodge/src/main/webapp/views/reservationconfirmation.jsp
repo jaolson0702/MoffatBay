@@ -61,6 +61,10 @@
                 padding: 10px;
                 border-radius: 4px;
             }
+
+            table td:first-of-type {
+                text-align: right;
+            }
         </style>
         <script>
             function displayEmailSuccess() {
@@ -76,7 +80,39 @@
         <h1 class="page-header">Reservation Confirmation</h1>
 
             <div class="summaryForm">
-                
+                <h2 style="text-align: center;">Your reservation has been submitted.</h2>
+                <table>
+                    <tr>
+                        <td>Reservation Id:</td>
+                        <td><%= res.getId() %></td>
+                    </tr>
+                    <tr>
+                        <td>Check-In Date:</td>
+                        <td><%=sdf.format(res.getCheckIn())%></td>
+                    </tr>
+                    <tr>
+                        <td>Check-Out Date:</td>
+                        <td><%=sdf.format(res.getCheckOut())%></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Guests:</td>
+                        <td><%=res.getGuestCount()%></td>
+                    </tr>
+                    <tr>
+                        <td>Room Number:</td>
+                        <td><%=room.getId()%></td>
+                    </tr>
+                    <tr>
+                        <td>Room Type:</td>
+                        <td><%=WordUtils.capitalizeFully(room.getRoomSize())%></td>
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td><%=String.format("$%,.2f", total)%></td>
+                    </tr>
+                </table>
+
+                <!--
                 <table>
                     <tr>
                         <th>Reservation Id</th>
@@ -97,6 +133,7 @@
                         <td><%= String.format("$%,.2f", total) %></td>
                     </tr>
                 </table>
+                -->
                 <button id="email" onclick="displayEmailSuccess()">Email me this information</button>
                 <p id="emailSuccess"></p>
             </div>
