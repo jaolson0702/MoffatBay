@@ -57,11 +57,15 @@
         
         /* Style the counter cards */
         .card {
-          padding: 16px;
-          padding-left: 0;
+          padding-bottom: 16px;
           text-align: center;
           background-color: #ffffff;
         }
+
+        img {
+          max-width: 100%;
+        }
+
         </style>
     </head>
     <body>      

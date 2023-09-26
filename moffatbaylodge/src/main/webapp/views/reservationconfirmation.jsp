@@ -83,7 +83,7 @@
                 <h2 style="text-align: center;">Your reservation has been submitted.</h2>
                 <table>
                     <tr>
-                        <td>Reservation Id:</td>
+                        <td>Reservation ID:</td>
                         <td><%= res.getId() %></td>
                     </tr>
                     <tr>
