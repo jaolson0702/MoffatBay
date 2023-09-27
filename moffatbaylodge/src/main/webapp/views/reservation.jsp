@@ -1,6 +1,8 @@
 <!--
     Team Delta
     Members: Jared Olson, Bryce Kellas, Charlene Centeno, Anh Vo
+
+    Images and partial descriptions from: thelodgeatsonoma.com/
 -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -80,9 +82,22 @@
                 <img src="<%=request.getContextPath()%>/images/rooms/double-full.webp" class="card-img-top" alt="Double full"  >
                 <div class="card-body">
                     <h3 class="card-title">Double Full Beds</h3>
-                    <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p>$115.50</p>
+                    <h4 class="card-subtitle mb-2 text-muted ">Features</h4>
+                    <ul class="card-text">
+                        <li>Maximum occupancy: 4</li>
+                        <li>2 full beds</li>
+                        <li>Pillowtop mattress, featherbed &amp; duvet</li>
+                        <li>Rollaway beds: allowed in some rooms</li>
+                        <li>Cribs: 1 permitted</li>
+                        <li>Shower/tub combination</li>
+                        <li>Robes: 2</li>
+                        <li>Hairdryer</li>
+                        <li>Locally sourced bath amenities</li>
+                        <li>Chair</li>
+                        <li>Desk for writing/work</li>
+                        <li>Iron &amp; ironing board</li>
+                    </ul>
+                    <p>$115.50/night</p>
                 </div>
             </div>
 
@@ -90,9 +105,22 @@
                 <img src="<%=request.getContextPath()%>/images/rooms/queen.webp" class="card-img-top" alt="..." >
                 <div class="card-body">
                     <h3 class="card-title">Queen Bed</h3>
-                    <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p>$120.75</p>
+                    <h4 class="card-subtitle mb-2 text-muted ">Features</h4>
+                    <ul class="card-text">
+                        <li>Maximum occupancy: 2</li>
+                        <li>1 queen bed</li>
+                        <li>Pillowtop mattress, featherbed &amp; duvet</li>
+                        <li>Rollaway beds: allowed in some rooms</li>
+                        <li>Cribs: 1 permitted</li>
+                        <li>Shower/tub combination</li>
+                        <li>Robes: 2</li>
+                        <li>Hairdryer</li>
+                        <li>Locally sourced bath amenities</li>
+                        <li>Chair</li>
+                        <li>Desk for writing/work</li>
+                        <li>Iron &amp; ironing board</li>
+                    </ul>
+                    <p>$120.75/night</p>
                 </div>
             </div>
 
@@ -100,9 +128,22 @@
                 <img src="<%=request.getContextPath()%>/images/rooms/double-queen.jpg" class="card-img-top" alt="..." >
                 <div class="card-body">
                     <h3 class="card-title">Double Queen Beds</h3>
-                    <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p>$131.25</p>
+                    <h4 class="card-subtitle mb-2 text-muted ">Features</h4>
+                    <ul class="card-text">
+                        <li>Maximum occupancy: 4</li>
+                        <li>2 queen beds</li>
+                        <li>Pillowtop mattress, featherbed &amp; duvet</li>
+                        <li>Rollaway beds: allowed in some rooms</li>
+                        <li>Cribs: 1 permitted</li>
+                        <li>Shower/tub combination</li>
+                        <li>Robes: 2</li>
+                        <li>Hairdryer</li>
+                        <li>Locally sourced bath amenities</li>
+                        <li>Chair</li>
+                        <li>Desk for writing/work</li>
+                        <li>Iron &amp; ironing board</li>
+                    </ul>
+                    <p>$131.25/night</p>
                 </div>
             </div>
 
@@ -110,9 +151,22 @@
                 <img src="<%=request.getContextPath()%>/images/rooms/king.webp" class="card-img-top" alt="..." >
                 <div class="card-body">
                     <h3 class="card-title">King Bed</h3>
-                    <h4 class="card-subtitle mb-2 text-muted ">Card subtitle</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p>$157.50</p>
+                    <h4 class="card-subtitle mb-2 text-muted ">Features</h4>
+                    <ul class="card-text">
+                        <li>Maximum occupancy: 2</li>
+                        <li>1 king bed</li>
+                        <li>Pillowtop mattress, featherbed &amp; duvet</li>
+                        <li>Rollaway beds: allowed in some rooms</li>
+                        <li>Cribs: 1 permitted</li>
+                        <li>Shower/tub combination</li>
+                        <li>Robes: 2</li>
+                        <li>Hairdryer</li>
+                        <li>Locally sourced bath amenities</li>
+                        <li>Chair</li>
+                        <li>Desk for writing/work</li>
+                        <li>Iron &amp; ironing board</li>
+                    </ul>
+                    <p>$157.50/night</p>
                 </div>
             </div>
         </div> <!-- end cards -->
@@ -153,7 +207,7 @@
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             height: fit-content;
             transition: 0.3s;
-            width: 40%;
+            width: 45%;
             min-width: 300px;
 
             -webkit-transition: all 1s ease;
@@ -183,6 +237,21 @@
         .card-body {
             padding: 2px 16px;
             background-color: #dcf6ff;
+            width: 100%;
+        }
+        .card-subtitle {
+            text-align: left;
+            margin: 1em 0 0em 1.5em;
+        }
+        .card-body ul {
+            list-style: none;
+            text-align: left;
+        }
+        .card-body ul li {
+            margin: 0.5em 0 ;
+        }
+        .card-body ul li:first-child {
+            margin-top: 0;
         }
         h3 {
             background-color: transparent;
@@ -203,7 +272,7 @@
         .flex-item {
             display: flex;
             flex-flow: row wrap;
-            justify-content: left;
+            justify-content: center;
             margin: 30px 10px;
         }
         .flex-item.form {
@@ -219,9 +288,8 @@
         }
         .flex-item>img {
             border-radius: 5px 5px 0 0;
-            height: 500px;
             width: 100%;
-            object-fit: cover;
+            object-fit: contain;
             /*-webkit-transition: all 1s ease;
             -moz-transition: all 1s ease;
             -o-transition: all 1s ease;
