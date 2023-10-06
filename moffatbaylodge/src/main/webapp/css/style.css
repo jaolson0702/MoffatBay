@@ -6,22 +6,22 @@
   /*Background colors*/
   --bodyBGColor: #ffffff;
   --containerBGColor: #c2c2c2;
-  --footerBGColor: #ffb287;
+  --footerBGColor: black;
   --formBGColor: #ffffff;
   --headBGColor: #000000;
   --navBGColor: #000000;
-  
+
   --navHoverBGColor: #ffb287;
 
   /*Text colors*/
-  --footerTextColor: #000000;
+  --footerTextColor: white;
   --headTextColor: white;
   --navTextColor: white;
 
   --navTextHoverColor: #000000;
 
   --footerLinkColor: #000000;
-  
+
   --footerLinkHoverColor: #ffffff;
 
   /*Error Text Color*/

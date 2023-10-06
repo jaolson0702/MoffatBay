@@ -41,18 +41,18 @@
 
                 <form method="POST" action="register">
                 
-                <input type="text" name="firstname" placeholder="First Name" required />
+                <input type="text" name="firstname" placeholder="First Name *" required />
                 <br /><br />
-                <input type="text" name="lastname" placeholder="Last Name" required />
+                <input type="text" name="lastname" placeholder="Last Name *" required />
                 <br /><br />
-                <input type="tel" name="phone" placeholder="Phone: 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                <input type="tel" name="phone" placeholder="Phone: 123-456-7890 *" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
                 <br /><br />
-                <input type="text" placeholder="Email" name="email" required />
+                <input type="text" placeholder="Email *" name="email" required />
                 <br /><br />
-                <input type="password" placeholder="Password" name="psw" required />
+                <input type="password" placeholder="Password *" name="psw" required />
                 <span style="font-size: 9px;">Password Requirements: At least 8 characters, one uppercase letter, one lowercase letter</span>
                 <br /><br />
-                <input type="password" placeholder="Confirm Password" name="pswcon" required />
+                <input type="password" placeholder="Confirm Password *" name="pswcon" required />
                 <br /><br />
                 <input type="hidden" name="form-name" value="register" />
                 <button type="submit" class="registerbtn">Register</button>
