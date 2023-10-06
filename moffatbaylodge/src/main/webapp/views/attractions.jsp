@@ -57,8 +57,10 @@
         
         /* Style the counter cards */
         .card {
-          padding-bottom: 16px;
+          border-radius: 25px;
+          padding: 16px;
           text-align: center;
+          font-size: 0.75em;
           background-color: #ffffff;
         }
 
@@ -80,6 +82,7 @@
             <div class="card">
                 <img src="<%=request.getContextPath()%>/images/hiking-sm.jpg" alt="hiking"/>
               <h4>Hiking</h4>
+              Discover the natural beauty of Joviedsa Island right in our lodge's backyard.
             </div>
           </div>
         
@@ -87,6 +90,7 @@
             <div class="card">
                 <img src="<%=request.getContextPath()%>/images/kayak-sm.jpg" alt="kayaking"/>
               <h4>Kayaking</h4>
+              Nestled right in front of the lodge is our own lake, when you can kayak solo or up to a group of 4.
             </div>
           </div>
          </div> 
@@ -96,6 +100,7 @@
             <div class="card">
                 <img src="<%=request.getContextPath()%>/images/ww-sm.jpg" alt="whale watching"/>
               <h4>Whale Watching</h4>
+              For inquiries regarding transportation, boat rides, and availability, please visit our front desk.
             </div>
           </div>
           
@@ -103,6 +108,7 @@
             <div class="card">
                 <img src="<%=request.getContextPath()%>/images/scuba-sm.jpg" alt="scuba diving"/>
               <h4>Scuba Diving</h4>
+              For inquiries, requirements, and rentals, please visit our front desk.
             </div>
           </div>
         </div>

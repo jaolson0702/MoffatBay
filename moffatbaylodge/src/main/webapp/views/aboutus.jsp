@@ -22,7 +22,7 @@
             .main {
                 background-color: white;
                 border: 1px solid black;
-                padding: 10px;
+                padding: 20px;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 1em;
             }
@@ -50,9 +50,9 @@
                 align-items: center;
             }
             .main .teamPicture {
-                margin-left: 10%;
-                margin-right: 20%;
+                margin-left: 20%;
                 display: inline-block;
+                text-align: center;
             }
             .main .contact {
                 text-align: center;
