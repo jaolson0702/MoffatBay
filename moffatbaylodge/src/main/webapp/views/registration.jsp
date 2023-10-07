@@ -4,6 +4,8 @@
 -->
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
+    <% String[] inputs = (String[])request.getAttribute("inputs"); %>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -41,13 +43,17 @@
 
                 <form method="POST" action="register">
                 
-                <input type="text" name="firstname" placeholder="First Name *" required />
+                <input type="text" name="firstname" placeholder="First Name *" 
+                    value="<%= inputs != null && inputs[0] != null ? inputs[0] : "" %>" required/>
                 <br /><br />
-                <input type="text" name="lastname" placeholder="Last Name *" required />
+                <input type="text" name="lastname" placeholder="Last Name *" 
+                    value="<%= inputs != null && inputs[1] != null ? inputs[1] : "" %>" required/>
                 <br /><br />
-                <input type="tel" name="phone" placeholder="Phone: 123-456-7890 *" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                <input type="tel" name="phone" placeholder="Phone: 123-456-7890 *" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                    value="<%= inputs != null && inputs[2] != null ? inputs[2] : "" %>" required />
                 <br /><br />
-                <input type="text" placeholder="Email *" name="email" required />
+                <input type="text" placeholder="Email *" name="email" 
+                    value="<%= inputs != null && inputs[3] != null ? inputs[3] : "" %>" required/>
                 <br /><br />
                 <input type="password" placeholder="Password *" name="psw" required />
                 <span style="font-size: 9px;">Password Requirements: At least 8 characters, one uppercase letter, one lowercase letter</span>

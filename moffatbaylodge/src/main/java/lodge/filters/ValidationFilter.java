@@ -45,6 +45,9 @@ public class ValidationFilter implements Filter  {
                     if (!b1 || !b2 || !b3 || !b4 || !b5) {
                         ArrayList<String> errors = v.getErrorMessages();
                         request.setAttribute("errors", errors);
+                        request.setAttribute("inputs", new String[] {
+                                                                request.getParameter("firstname"), request.getParameter("lastname"),
+                                                                request.getParameter("phone"),request.getParameter("email")});
                         RequestDispatcher rd = request.getRequestDispatcher("?action=registration");
                         rd.include(request, response);
                     }
