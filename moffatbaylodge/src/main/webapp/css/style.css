@@ -10,19 +10,17 @@
   --formBGColor: #ffffff;
   --headBGColor: #000000;
   --navBGColor: #000000;
-
   --navHoverBGColor: #ffb287;
+  --footerHoverBGColor: #ffb287;
 
   /*Text colors*/
   --footerTextColor: white;
   --headTextColor: white;
   --navTextColor: white;
-
   --navTextHoverColor: #000000;
-
+  --footerTextHoverColor: #000000;
   --footerLinkColor: white;
 
-  --footerLinkHoverColor: #ffffff;
 
   /*Error Text Color*/
   --errorTextColor: red;
@@ -140,7 +138,8 @@ footer a {
 }
 
 footer a:hover {
-  color: var(--footerLinkHoverColor);
+  background-color: var(--footerHoverBGColor);
+  color: var(--footerTextHoverColor);
 }
 
 #logo {
