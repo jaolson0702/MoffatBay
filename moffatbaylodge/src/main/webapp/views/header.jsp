@@ -30,7 +30,6 @@ pageEncoding="ISO-8859-1"%>
             if (session.getAttribute("username") != null) {
                 out.print("<a href=\"" + base + "?action=logout\">Log Out</a>");
             } else {
-                out.print("<a href=\"" + base + "?action=registration\">Registration</a>");
                 out.print("<a href=\"" + base + "?action=login\">Log In</a>");
             }
             %>

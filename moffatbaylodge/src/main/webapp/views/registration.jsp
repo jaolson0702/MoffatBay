@@ -56,6 +56,8 @@
                 <br /><br />
                 <input type="hidden" name="form-name" value="register" />
                 <button type="submit" class="registerbtn">Register</button>
+                <br /><br />
+                <p>Already registered? <a href="<%=base%>?action=login">Login</a></p>
                 </form>
             </div>
 

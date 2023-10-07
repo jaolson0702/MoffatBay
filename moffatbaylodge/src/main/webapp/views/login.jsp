@@ -54,6 +54,7 @@
                 <br /><br />
                 <button type="submit">Login</button>
                 <br /><br />
+                <p>Are you new here? <a href="<%=base%>?action=registration">Register</a></p>
                 </form>
             </div>
             
